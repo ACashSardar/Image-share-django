@@ -19,6 +19,13 @@
         <a href="/login/"><i class="fa fa-sign-in"></i> LOG IN</a>
     </div>
 
+    <div class="search-bar">
+        <form action="#">
+            <input type="text" placeholder="Enter an image catagory here..">
+            <input type="submit" value="SEARCH">
+        </form>
+    </div>
+
     <div class="gallery">
         {% for image in images %}
             <div class="repeat">   
@@ -29,6 +36,6 @@
             </div>
         {% endfor %}
     </div>
-
+    <br><br>
 </body>
 </html>

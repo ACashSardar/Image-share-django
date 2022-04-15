@@ -136,5 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals(),logging=False)
 
 ## Run on terminal: 
-#  heroku run python manage.py migrate -a todo-list-akash 
-#  heroku run python manage.py makemigrations -a todo-list-akash
+#  heroku run python manage.py migrate -a image-share-akash 
+#  heroku run python manage.py makemigrations -a image-share-akash

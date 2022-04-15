@@ -6,7 +6,37 @@
   body {
     background: white;
   }
-  
+  .search-bar{
+    padding: 10px;
+    font-family: Calibri light;
+    color: black;
+  }
+
+  .search-bar input[type='text']{
+    position:relative;
+    width:60%;
+    left: 20%;
+    padding: 10px;
+    border-radius: 2px;
+    border:2px solid lavender;
+  }
+  .search-bar input[type='submit']{
+    position:relative;
+    width:80px;
+    left: 19%;
+    padding: 10px;
+    border-radius: 2px;
+    background: black;
+    color: white;
+    border:2px solid black;
+  }
+
+  .search-bar input[type='submit']:hover{
+    background: lavender;
+    color: black;
+    border: 2px solid black;
+  }
+
   .user-forms{
     position: relative;
     left:35%;width:30%;
@@ -101,10 +131,15 @@
       }
 
   .upload{
-      margin:5px;
+      left: 1%;
+      width: 98%;
+      position: relative;
       padding:10px;
       text-align: center;
       font-family: Cambria;
+      background: lightgray;
+      border-radius: 5px;
+      margin: 15px 0px;
     }
 
    .upload select{
@@ -122,16 +157,18 @@
        background: gray;
    }
 
+
    #upload-icon{
        color: white;
-       background-color: navy;
+       background-color: lightslategray;
        border-radius: 4px;
        width:100px;height: 40px;
-       border:1px solid navy;
+       border:1px solid lightslategray;
    }
    #upload-icon:hover{
-      background-color: blue;
-      border:1px solid blue;
+      background-color: silver;
+      border:1px solid silver;
+      color: black;
     }
 
    .repeat{
@@ -230,10 +267,15 @@
     .about-section{
       display: none;
     }
+    .upload{
+      left: 2.5%;
+      width: 95%;
+    }
     .gallery {
       display: grid;
       position: relative;
       grid-template-columns: repeat(2, 49%);
+      grid-row-gap: 15px;
       
     }
     .grid-container {

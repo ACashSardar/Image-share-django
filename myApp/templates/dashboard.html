@@ -49,9 +49,9 @@
             {% for ui in userinfo %}
                 <img src="https://cdn.dribbble.com/users/1577045/screenshots/4914645/media/028d394ffb00cb7a4b2ef9915a384fd9.png?compress=1&resize=400x300&vertical=top"
                 id="profile-pic">
-                <p>Username: {{ui.user}}</p>
-                <p>Email: {{ui.email}}</p>
-                <p>About: {{ui.about}}</p>
+                <p><strong>Username: </strong>{{ui.user}}</p>
+                <p><strong>Email: </strong> {{ui.email}}</p>
+                <p><strong>About: </strong> {{ui.about}}</p>
             {% endfor %}
         </div>
 
@@ -66,5 +66,6 @@
             {% endfor %}
         </div>
     </div>
+    <br><br>
 </body>
 </html>
