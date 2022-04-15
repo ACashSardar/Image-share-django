@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>LOG IN Page</title>
+  </head>
+
+  <body>
+    <div class="app-name">
+      <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE</h2>
+    </div>
+    <div class="container">
+      <a href="/"><i class="fa fa-home"></i> HOME</a>
+      <a href="/signup/"><i class="fa fa-pencil-square-o"></i> SIGN UP</a>
+    </div>
+    <br><br>
+
+    <div class="user-forms">
+      <h1>LOG IN PAGE</h1><br>
+      <form method="post" action="/login/">
+          {% csrf_token %} 
+          <label>username</label>
+          <input type="text" name="username" placeholder="Enter username"><br><br>
+          <label>password</label>
+          <input type="password" name="password" placeholder="Enter password"><br><br><br>
+          <input class="btn btn-success" type="submit" value="LOGIN">
+      </form><br>
+      <p>Don't have an account yet? <a href="/signup">SIGN UP</a></p>
+    </div>
+
+  </body>
+</html>

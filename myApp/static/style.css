@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background: white;
+  }
+  
+  .user-forms{
+    position: relative;
+    left:35%;width:30%;
+    background:lavender;
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 4px;
+    font-family: calibri light;
+  }
+  .user-forms label,h1,p,a{
+    color: black;
+    font-family: inherit;
+  }
+  .user-forms label{
+    font-size: 20px;
+  }
+  .user-forms input[type='text'],input[type='password'],.about-section input[type='text'],.mobile-dash input[type='text']{
+    background: white;
+    width: 95%;
+    padding: 8px 2px;
+    margin: 2px;
+    border-radius: 2px;
+    border: 1px solid white;
+    color:darkslateblue;
+    font-family: calibri light;
+  }
+  .user-forms input[type='submit']{
+    width: 96%;
+    background: darkcyan;
+    padding: 10px 10px;
+    border-radius: 2px;
+    border: 1px solid darkcyan;
+    color:white;
+  }
+  .user-forms input[type='submit']:hover{
+    background: white;
+    color:darkslateblue;
+    border: 1px solid white;
+  }
+
+  .app-name{
+      padding: 10px;
+      color: lightsteelblue;
+      background: black;
+      font-family: Cambria;
+      text-align: center;
+      font-size: 25px;
+    }
+
+    .gallery {
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(5, 19.5%);
+        grid-column-gap: 5px;
+        width: 100%;
+        text-align: right;
+        color: white;
+    }
+    .gallery img{
+      width: 100%;
+      height: 75%;
+      border-radius: 4px;
+      border: 2px solid white;
+    }
+
+    #dwn{
+      padding:5px;
+      position: relative;
+      color: white;margin-bottom: 0px;
+      background-color: darkslateblue;
+      border-radius: 2px;
+      border: 1px solid darkslateblue;
+    }
+    #dwn:hover{
+      color: white;
+      background-color: slateblue;
+      border: 1px solid slateblue;
+      }
+      
+    #del{
+      padding:5px;
+      position: relative;
+      color: white;margin-bottom: 0px;
+      background-color: crimson;
+      border-radius: 2px;
+      border: 1px solid crimson;
+    }
+    #del:hover{
+      color: white;
+      background-color: coral;
+      border: 1px solid coral;
+      }
+
+  .upload{
+      margin:5px;
+      padding:10px;
+      text-align: center;
+      font-family: Cambria;
+    }
+
+   .upload select{
+       width:100px;
+       height: 40px;
+       color:black;
+       background-color: white;
+       border-radius: 5px;
+       border: 1px solid white;
+       margin-right: 10px;
+   }
+
+   .upload input[type='submit']:hover{
+       color: white;
+       background: gray;
+   }
+
+   #upload-icon{
+       color: white;
+       background-color: navy;
+       border-radius: 4px;
+       width:100px;height: 40px;
+       border:1px solid navy;
+   }
+   #upload-icon:hover{
+      background-color: blue;
+      border:1px solid blue;
+    }
+
+   .repeat{
+      background: inherit;
+      border-radius: 5px;
+      height: 100%;padding: 5px;
+      padding-bottom: 0px;
+      font-family:Cambria;
+   }
+
+   #info{
+     color: black;
+     font-size: 12px;
+   }
+
+   .container{
+     font-family: Cambria;
+     text-align: right;
+     padding: 10px;
+     background: lavender;
+   }
+   .container a{
+    color: black;
+    text-decoration: none;
+    margin-left:10px;
+   }
+
+   .about-section{
+     background: lightslategray;
+     border-radius: 10px;
+     padding: 15px;
+     font-family: Cambria;
+     margin-left: 10px;
+     color: white;
+   }
+   .about-section p{
+    color: white;
+  }
+  .about-section a{
+    color: white;
+    position: relative;
+    left:65%;
+    margin: 5px;
+    text-decoration: none;
+  }
+  .about-section input[type='submit']{
+    width: 20%;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: 1px solid white;
+  }
+  .about-section input[type='submit']:hover{
+    background-color: lavender;
+    color: black;
+  }
+  .about-section textarea{
+    border-radius: 2px;
+    font-family: Cambria;
+    width: 95%;
+    padding: 5px;
+  }
+
+   .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      
+    }
+
+    #profile-pic{
+      width: 40%;
+      position: relative;
+      left: 30%;
+      height: 110px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .my-posts{
+      text-align: center;
+      color: darkslateblue;
+      font-family: Cambria;
+    }
+    .mobile-dash{
+      display: none;
+    }
+
+   @media only screen and (max-width: 600px){
+    .user-forms{
+      width: 90%;
+      left: 5%;
+    }
+    .user-forms p{
+      font-size: 13px;
+    }
+    .about-section{
+      display: none;
+    }
+    .gallery {
+      display: grid;
+      position: relative;
+      grid-template-columns: repeat(2, 49%);
+      
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(1, 100%);
+      
+    }
+    .mobile-dash{
+      display:block;
+      background: lightslategray;
+      border-radius: 10px;
+      padding: 15px;
+      font-family: Cambria;
+      margin: 10px;
+    }
+    .mobile-dash p{
+     color: white;
+   }
+   #profile-pic{
+    width: 28%;
+    position: relative;
+    left: 36%;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+   .mobile-dash a{
+     color: white;
+     position: relative;
+     left:75%;
+     margin: 5px;
+     text-decoration: none;
+   }
+   .mobile-dash input[type='submit']{
+     width: 20%;
+     background: white;
+     padding: 5px 10px;
+     border-radius: 2px;
+     border: 1px solid white;
+   }
+   .mobile-dash input[type='submit']:hover{
+     background-color: lavender;
+     color: black;
+   }
+   .mobile-dash textarea{
+     border-radius: 2px;
+     font-family: Cambria;
+     width: 95%;
+     padding: 5px;
+   }
+  }
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Homepage</title>
+</head>
+<body>
+    <div class="app-name">
+        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE</h2>
+    </div>
+
+    <div class="container">
+        <a href="#"><i class="fa fa-user-circle"></i> {{user}}</a>
+        <a href="/authuserhome/"><i class="fa fa-home"></i> HOME</a>
+        <a href="/logout/"><i class="fa fa-sign-out"></i> LOG OUT</a>
+    </div>
+
+    <div class="mobile-dash">
+        <a href="/editprofile/">Edit Profile <i class="fa fa-edit"></i></a><br>
+            <img src="https://cdn.dribbble.com/users/1577045/screenshots/4914645/media/028d394ffb00cb7a4b2ef9915a384fd9.png?compress=1&resize=400x300&vertical=top"
+            id="profile-pic">
+            <p>Username: {{userinfo.user}}</p>
+            <form action="#" method="post">
+                {% csrf_token %}
+                <p>Email</p>
+                <input type="text" name="email" placeholder="{{userinfo.email}}"><br><br>
+                <p>About</p>
+                <textarea name="about" id="" cols="25" rows="6">{{userinfo.about}}</textarea><br>
+                <input type="submit" name="save" value="OK"><br>
+            </form>
+            <a href="/"><i class="fa fa-save"></i> SAVE</a>
+    </div>
+
+    <div class="upload">
+        <form action="/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="photo" accept="image/*" placeholder="Choose an image">
+            <button id="upload-icon">UPLOAD <i class="fa fa-upload"></i></button>
+        </form>
+    </div>
+
+    <div class="grid-container">
+        <div class="about-section">
+            <a href="#">Edit Profile <i class="fa fa-edit"></i></a><br>
+                <img src="https://cdn.dribbble.com/users/1577045/screenshots/4914645/media/028d394ffb00cb7a4b2ef9915a384fd9.png?compress=1&resize=400x300&vertical=top"
+                id="profile-pic">
+                <p>Username: {{userinfo.user}}</p>
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <label>Email</label><br>
+                    <input type="text" name="email" placeholder="{{userinfo.email}}"><br><br>
+                    <label>About</label><br>
+                    <textarea name="about" id="" cols="25" rows="6">{{userinfo.about}}</textarea><br>
+                    <input type="submit" name="save" value="OK"><br>
+                </form>
+                <a href="/"><i class="fa fa-save"></i> SAVE</a>
+        </div>
+
+        <div class="gallery">
+            {% for image in images %}
+                <div class="repeat">   
+                    <p id="info">Posted on {{image.date}}</p>
+                    <img src="{{image.photo.url}}" alt=""><br>
+                    <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
+                    <a href="{% url 'delete' image.id %}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>               
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

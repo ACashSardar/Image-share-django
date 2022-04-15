@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>SIGN UP Page</title>
+  </head>
+
+  <body>
+
+    <div class="app-name">
+      <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE</h2>
+    </div>
+    <div class="container">
+      <a href="/"><i class="fa fa-home"></i> HOME</a>
+      <a href="/login/"><i class="fa fa-sign-in"></i> LOG IN</a>
+    </div>
+    <div class="user-forms">
+        <h1>SIGN UP PAGE</h1>
+  
+        <form method="post" action="/signup/">
+            {% csrf_token %} 
+            {% for field in form %}
+                <label>{{field.html_name}}</label><br>
+                {{field}}<br><br>
+            {% endfor %}<br>
+            <input type="submit" value="CREATE ACCOUNT">
+        </form><br>
+        <p>*Note: 
+          Your password can’t be too similar to your other personal information.
+          Your password must contain at least 8 characters.
+          Your password can’t be a commonly used password.
+          Your password can’t be entirely numeric.</p><br>
+        <p>Already have an account? <a href="/login">LOG IN</a></p>
+    </div>
+
+  </body>
+</html>
