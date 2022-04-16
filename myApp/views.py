@@ -1,9 +1,6 @@
-import email
-import profile
-from django.shortcuts import redirect, render,HttpResponse
+from django.shortcuts import redirect, render
 from .models import Image,Profile
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as UserLogin, logout as UserLogout
 
 # Create your views here.

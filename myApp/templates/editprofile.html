@@ -21,9 +21,7 @@
     </div>
 
     <div class="mobile-dash">
-        <a href="/editprofile/">Edit Profile <i class="fa fa-edit"></i></a><br>
-            <img src="https://cdn.dribbble.com/users/1577045/screenshots/4914645/media/028d394ffb00cb7a4b2ef9915a384fd9.png?compress=1&resize=400x300&vertical=top"
-            id="profile-pic">
+            <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic">
             <p>Username: {{userinfo.user}}</p>
             <form action="#" method="post">
                 {% csrf_token %}
@@ -31,9 +29,8 @@
                 <input type="text" name="email" placeholder="{{userinfo.email}}"><br><br>
                 <p>About</p>
                 <textarea name="about" id="" cols="25" rows="6">{{userinfo.about}}</textarea><br>
-                <input type="submit" name="save" value="OK"><br>
+                <input type="submit" name="save" value="OK"> <a href="/"> <i class="fa fa-save"></i> SAVE</a>
             </form>
-            <a href="/"><i class="fa fa-save"></i> SAVE</a>
     </div>
 
     <div class="upload">
@@ -46,28 +43,30 @@
 
     <div class="grid-container">
         <div class="about-section">
-            <a href="#">Edit Profile <i class="fa fa-edit"></i></a><br>
-                <img src="https://cdn.dribbble.com/users/1577045/screenshots/4914645/media/028d394ffb00cb7a4b2ef9915a384fd9.png?compress=1&resize=400x300&vertical=top"
-                id="profile-pic">
-                <p>Username: {{userinfo.user}}</p>
+                <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
+                <p>Username: {{userinfo.user}}</p><br>
                 <form action="#" method="post">
                     {% csrf_token %}
                     <label>Email</label><br>
                     <input type="text" name="email" placeholder="{{userinfo.email}}"><br><br>
                     <label>About</label><br>
                     <textarea name="about" id="" cols="25" rows="6">{{userinfo.about}}</textarea><br>
-                    <input type="submit" name="save" value="OK"><br>
+                    <input type="submit" name="save" value="OK"> <a href="/"> <i class="fa fa-save"></i> SAVE</a>
                 </form>
-                <a href="/"><i class="fa fa-save"></i> SAVE</a>
         </div>
 
         <div class="gallery">
             {% for image in images %}
                 <div class="repeat">   
                     <p id="info">Posted on {{image.date}}</p>
-                    <img src="{{image.photo.url}}" alt=""><br>
+                    <a href="{{image.photo.url}}">
+                        <img src="{{image.photo.url}}" alt=""><br>
+                    </a>
                     <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
-                    <a href="{% url 'delete' image.id %}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>               
+                    {% if not visitor %}
+                    <a href="{% url 'delete' image.id %}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
+                    {% endif %}
+                    <br><br>
                 </div>
             {% endfor %}
         </div>
