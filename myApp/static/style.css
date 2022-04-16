@@ -105,7 +105,9 @@
     #dwn{
       padding:5px;
       position: relative;
-      color: white;margin-bottom: 0px;
+      color: white;
+      margin-bottom: 0px;
+      margin-right: 2px;
       background-color: darkslateblue;
       border-radius: 2px;
       border: 1px solid darkslateblue;
@@ -122,6 +124,7 @@
       color: white;margin-bottom: 0px;
       background-color: crimson;
       border-radius: 2px;
+      margin-right: 2px;
       border: 1px solid crimson;
     }
     #del:hover{
@@ -131,15 +134,13 @@
       }
 
   .upload{
-      left: 1%;
-      width: 98%;
+      width: 100%;
       position: relative;
       padding:10px;
       text-align: center;
       font-family: Cambria;
-      background: lightgray;
-      border-radius: 5px;
-      margin: 15px 0px;
+      background:inherit;
+      margin-bottom: 20px;
     }
 
    .upload select{
@@ -152,23 +153,17 @@
        margin-right: 10px;
    }
 
-   .upload input[type='submit']:hover{
-       color: white;
-       background: gray;
-   }
-
 
    #upload-icon{
        color: white;
-       background-color: lightslategray;
-       border-radius: 4px;
-       width:100px;height: 40px;
-       border:1px solid lightslategray;
+       background-color: darkslateblue;
+       border-radius: 2px;
+       width:90px;height: 28px;
+       border:1px solid darkslateblue;
    }
    #upload-icon:hover{
-      background-color: silver;
-      border:1px solid silver;
-      color: black;
+      background-color: slateblue;
+      border:1px solid slateblue;
     }
 
    .repeat{
@@ -181,7 +176,11 @@
 
    #info{
      color: black;
+     text-align: left;
+     position: relative;
+     left: 0%;
      font-size: 12px;
+     margin-left: 2px;
    }
 
    .container{
@@ -266,6 +265,11 @@
     }
     .about-section{
       display: none;
+      
+    }
+    .about-section a{
+      left:50%;
+      font-size: 15px;
     }
     .upload{
       left: 2.5%;
@@ -326,6 +330,16 @@
      width: 95%;
      padding: 5px;
    }
+   .search-bar input[type='text']{
+    width:60%;
+    left: 10%;
+    border: 2px solid black;
+  }
+  .search-bar input[type='submit']{
+    position:relative;
+    width:80px;
+    left: 8%;
+  }
   }
 
 

@@ -18,7 +18,7 @@ def home(request):
     if request.user.is_authenticated:
         images=Image.objects.filter(user=request.user)
         userinfo=Profile.objects.filter(user=request.user)
-        context={'images':images,'userinfo':userinfo}
+        context={'images':images,'userinfo':userinfo,'visitor':False}
         return render(request,'dashboard.html',context)
     else:
         context={'images':images}
@@ -27,7 +27,7 @@ def home(request):
 def dashboard(request):
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.filter(user=request.user)
-    context={'images':images,'userinfo':userinfo}
+    context={'images':images,'userinfo':userinfo,'visitor':False}
     return render(request,'dashboard.html',context)
 
 def editprofile(request):
@@ -100,3 +100,12 @@ def authuserhome(request):
     images=Image.objects.all()
     context={'images':images}
     return render(request,'authuserhome.html',context)
+
+def onclick(request,username):
+    allprof=Profile.objects.all()
+    for ap in allprof:
+        if str(ap.user)==username:
+            images=Image.objects.filter(user=ap.user)
+            userinfo=Profile.objects.filter(user=ap.user)
+    context={'images':images,'userinfo':userinfo,'visitor':True}
+    return render(request,'dashboard.html',context)

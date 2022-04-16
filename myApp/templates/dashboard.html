@@ -25,33 +25,41 @@
         {% for ui in userinfo %}
             <img src="https://cdn.dribbble.com/users/1577045/screenshots/4914645/media/028d394ffb00cb7a4b2ef9915a384fd9.png?compress=1&resize=400x300&vertical=top"
             id="profile-pic">
-            <p>Username: {{ui.user}}</p>
-            <p>Email: {{ui.email}}</p>
-            <p>About: {{ui.about}}</p>
+            <p><i class="fa fa-caret-right"></i><strong>Username: </strong>{{ui.user}}</p>
+            <p><i class="fa fa-caret-right"></i><strong>Email: </strong> {{ui.email}}</p>
+            <p><i class="fa fa-caret-right"></i><strong>About: </strong> {{ui.about}}</p>
         {% endfor %}
     </div>
 
     <div class="upload">
+        {% if not visitor %}
         <form action="/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file" name="photo" accept="image/*" placeholder="Choose an image">
             <button id="upload-icon">UPLOAD <i class="fa fa-upload"></i></button>
         </form>
+        {% endif %}
     </div>
 
     <div class="my-posts">
+        {% if not visitor %}
         <h2><i class="fa fa-image"></i> My Posts</h2>
+        {% else %}
+        <h2><i class="fa fa-image"></i> {{userinfo.first}}'s Posts</h2>
+        {% endif %}
     </div><br>
     
     <div class="grid-container">
         <div class="about-section">
+            {% if not visitor %}
             <a href="/editprofile/">Edit Profile <i class="fa fa-edit"></i></a><br>
+            {% endif %}
             {% for ui in userinfo %}
                 <img src="https://cdn.dribbble.com/users/1577045/screenshots/4914645/media/028d394ffb00cb7a4b2ef9915a384fd9.png?compress=1&resize=400x300&vertical=top"
                 id="profile-pic">
-                <p><strong>Username: </strong>{{ui.user}}</p>
-                <p><strong>Email: </strong> {{ui.email}}</p>
-                <p><strong>About: </strong> {{ui.about}}</p>
+                <p><i class="fa fa-caret-right"></i><strong>Username: </strong>{{ui.user}}</p>
+                <p><i class="fa fa-caret-right"></i><strong>Email: </strong> {{ui.email}}</p>
+                <p><i class="fa fa-caret-right"></i><strong>About: </strong> {{ui.about}}</p>
             {% endfor %}
         </div>
 
@@ -61,7 +69,9 @@
                     <p id="info">Posted on {{image.date}}</p>
                     <img src="{{image.photo.url}}" alt=""><br>
                     <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
-                    <a href="{% url 'delete' image.id %}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>               
+                    {% if not visitor %}
+                    <a href="{% url 'delete' image.id %}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

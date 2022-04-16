@@ -29,7 +29,7 @@
     <div class="gallery">
         {% for image in images %}
             <div class="repeat">   
-                <p id="info">Posted by {{image.user}}</p>
+                <p id="info">Posted by <a href="{% url 'onclick' image.user %}"><i> {{image.user}}</i></a></p>
                 <p id="info"> on {{image.date}}</p>
                 <img src="{{image.photo.url}}" alt=""><br>
                 <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
