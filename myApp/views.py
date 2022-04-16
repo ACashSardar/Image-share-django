@@ -13,7 +13,6 @@ def home(request):
         photo=request.FILES['photo']
         if photo:
             photo=Image.objects.create(photo=photo, user=request.user)
-
     images=Image.objects.all()
     if request.user.is_authenticated:
         images=Image.objects.filter(user=request.user)
@@ -85,7 +84,7 @@ def signup(request):
         context={'form':form}
         if form.is_valid():
             form.save()
-            newUser=request.user
+            # Profile.objects.create(user=request.user,email='None@gmail.com')
             return redirect('login')
         else:
             return render(request,"signup.html",context)
@@ -103,9 +102,12 @@ def authuserhome(request):
 
 def onclick(request,username):
     allprof=Profile.objects.all()
+    print(allprof)
     for ap in allprof:
+        print(ap.user," ",username)
         if str(ap.user)==username:
             images=Image.objects.filter(user=ap.user)
+            print('OK')
             userinfo=Profile.objects.filter(user=ap.user)
     context={'images':images,'userinfo':userinfo,'visitor':True}
     return render(request,'dashboard.html',context)
