@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
-from .models import Image,Profile
+from matplotlib.pyplot import title
+from .models import Image,Profile, Category
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as UserLogin, logout as UserLogout
 
@@ -8,22 +9,28 @@ from django.contrib.auth import authenticate, login as UserLogin, logout as User
 def home(request): 
     if request.method=="POST":
         photo=request.FILES['photo']
-        if photo:
-            photo=Image.objects.create(photo=photo, user=request.user)
+        category=Category.objects.get(title=request.POST['category'])
+        if photo and category:
+            photo=Image.objects.create(photo=photo, user=request.user, catg=category)
+
     images=Image.objects.all()
     if request.user.is_authenticated:
         images=Image.objects.filter(user=request.user)
         userinfo=Profile.objects.filter(user=request.user)
-        context={'images':images,'userinfo':userinfo,'visitor':False}
+        category=Category.objects.all()
+        print(category)
+        context={'images':images,'userinfo':userinfo,'category':category,'visitor':False}
         return render(request,'dashboard.html',context)
     else:
-        context={'images':images}
+        category=Category.objects.all()
+        context={'images':images,'category':category}
         return render(request,'homepage.html',context)       
 
 def dashboard(request):
+    category=Category.objects.all()
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.filter(user=request.user)
-    context={'images':images,'userinfo':userinfo,'visitor':False}
+    context={'images':images,'userinfo':userinfo,'category':category,'visitor':False}
     return render(request,'dashboard.html',context)
 
 def editprofile(request):
@@ -57,9 +64,10 @@ def delete(request,imageID):
         item.delete()
     except:
         pass
+    category=Category.objects.all()
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.filter(user=request.user)
-    context={'images':images,'userinfo':userinfo}
+    context={'images':images,'userinfo':userinfo, 'category':category}
     return render(request,'dashboard.html',context)
 
 def login(request):
@@ -94,7 +102,8 @@ def logout(request):
 
 def authuserhome(request):
     images=Image.objects.all()
-    context={'images':images}
+    category=Category.objects.all()
+    context={'images':images,'category':category}
     return render(request,'authuserhome.html',context)
 
 def onclick(request,username):
@@ -104,7 +113,7 @@ def onclick(request,username):
         print(ap.user," ",username)
         if str(ap.user)==username:
             images=Image.objects.filter(user=ap.user)
-            print('OK')
+            category=Category.objects.all()
             userinfo=Profile.objects.filter(user=ap.user)
-    context={'images':images,'userinfo':userinfo,'visitor':True}
+    context={'images':images,'userinfo':userinfo,'category':category,'visitor':True}
     return render(request,'dashboard.html',context)

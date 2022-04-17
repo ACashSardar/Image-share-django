@@ -81,9 +81,10 @@
       padding: 10px;
       color: lightsteelblue;
       background: black;
-      font-family: Cambria;
+      font-family: Helvetica, Arial, sans-serif;
       text-align: center;
-      font-size: 25px;
+      font-size: 20px;
+      line-height: 1.5;
     }
 
     .gallery {
@@ -114,9 +115,9 @@
       border: 1px solid darkslateblue;
     }
     #dwn:hover{
-      color: white;
-      background-color: slateblue;
-      border: 1px solid slateblue;
+      color: slateblue;
+      background-color: inherit;
+      border: 2px solid slateblue;
       }
       
     #del{
@@ -129,9 +130,9 @@
       border: 1px solid crimson;
     }
     #del:hover{
-      color: white;
-      background-color: coral;
-      border: 1px solid coral;
+      color: crimson;
+      background-color: inherit;
+      border: 2px solid crimson;
       }
 
   .upload{
@@ -163,14 +164,15 @@
        border:1px solid darkslateblue;
    }
    #upload-icon:hover{
-      background-color: slateblue;
-      border:1px solid slateblue;
+    color: slateblue;
+    background-color: inherit;
+    border: 2px solid slateblue;
     }
 
    .repeat{
       background: inherit;
       height: 100%;
-      font-family:Cambria;
+      font-family: Helvetica, Arial, sans-serif;
    }
 
    #info{
@@ -252,6 +254,36 @@
     .mobile-dash{
       display: none;
     }
+    .catagory-list{
+      padding: 10px;
+      border-radius: 10px;
+      margin: 0px 5px;
+      background: white;
+    }
+
+    .cat-items{
+      width:100%;
+      padding: 12px 4px;
+      background: lavender;
+      color: black;
+      text-align: center;
+      border:1px solid white;
+      border-radius: 5px;
+    }
+    .cat-items:hover{
+      background: lavender;
+      font-weight: bold;
+    }
+    .cat-items a{
+      text-decoration: none;
+      font-family: Cambria;
+      font-size: 15px;
+    }
+    #select-catagory{
+      border: 1px solid gray;
+      height: 28px;
+      width: 100px;
+    }
 
    @media only screen and (max-width: 600px){
     .user-forms{
@@ -297,7 +329,7 @@
      color: white;
    }
    #profile-pic{
-    width: 27%;
+    width: 29%;
     position: relative;
     left: 36%;
     height: 110px;
@@ -336,6 +368,17 @@
     position:relative;
     width:80px;
     left: 8%;
+  }
+  .cat-tiles{
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(4, 25%);
+    grid-row-gap: 0px;
+  }
+  .cat-items a{
+    text-decoration: none;
+    font-family: Cambria;
+    font-size: 10px;
   }
   }
 

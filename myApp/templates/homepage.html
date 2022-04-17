@@ -27,21 +27,38 @@
     </div>
     <br>
 
-    <div class="my-posts">
-        <h2>Click on image to view full size</h2><br>
-    </div>
-    <div class="gallery">
-        {% for image in images %}
-            <div class="repeat">   
-                <p id="info">Posted by <a href="{% url 'onclick' image.user %}"><i> {{image.user}}</i></a></p>
-                <p id="info"> on {{image.date}}</p>
-                <a href="{{image.photo.url}}">
-                    <img src="{{image.photo.url}}" alt=""><br>
-                </a>
-                <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
+
+    <div class="grid-container">
+        <div class="catagory-list">
+            <div class="my-posts">
+                <h2>Catagories</h2><br><br>
             </div>
-        {% endfor %}
-    </div>
+            <div class="cat-tiles">
+                {% for catg in category %}
+                    <button class="cat-items"><a href="" class="">{{catg}}</a></button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="tiles">
+            <div class="my-posts">
+                <h2>Click on image to view full size</h2>
+            </div><br>
+            <div class="gallery">
+                {% for image in images %}
+                    <div class="repeat">   
+                        <p id="info">Posted by <a href="{% url 'onclick' image.user %}"><i> {{image.user}}</i></a></p>
+                        <p id="info"> on {{image.date}}</p>
+                        <a href="{{image.photo.url}}">
+                            <img src="{{image.photo.url}}" alt=""><br>
+                        </a>
+                        <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div> 
     <br><br>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
