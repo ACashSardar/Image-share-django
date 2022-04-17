@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -10,6 +9,7 @@ urlpatterns = [
     path('authuserhome/', views.authuserhome,name='authuserhome'),
     path('editprofile/', views.editprofile,name='editprofile'),
     path('onclick/<slug:username>', views.onclick,name='onclick'),
+    path('catgsearch/<str:catg>', views.catgsearch,name='catgsearch'),
     path('login/', views.login,name='login'),
     path('signup/', views.signup,name='signup'),
     path('logout/', views.logout,name='logout'),

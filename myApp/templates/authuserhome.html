@@ -34,7 +34,7 @@
             </div>
             <div class="cat-tiles">
                 {% for catg in category %}
-                    <button class="cat-items"><a href="" class="">{{catg}}</a></button>
+                    <button class="cat-items"><a href="{% url 'catgsearch' catg %}" class="">{{catg}}</a></button>
                 {% endfor %}
             </div>
         </div>

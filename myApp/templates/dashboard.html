@@ -27,7 +27,9 @@
             <p><i class="fa fa-caret-right"></i><strong>Email: </strong> {{ui.email}}</p><br>
             <p><i class="fa fa-caret-right"></i><strong>About: </strong> {{ui.about}}</p><br>
         {% endfor %}
-        <a href="/editprofile/">Edit Profile <i class="fa fa-edit"></i></a><br>
+        {% if not visitor %}
+            <a href="/editprofile/">Edit Profile <i class="fa fa-edit"></i></a><br>
+        {% endif %}
     </div>
 
     <div class="upload">
@@ -36,12 +38,15 @@
             {% csrf_token %}
             <input type="file" name="photo" accept="image/*" placeholder="Choose an image">
             <select name="category" id="select-catagory">
-                <!-- <option value="{{catg}}">{{catg}}</option> -->
                 {% for catg in category %}
                     <option value="{{catg}}">{{catg}}</option>
                 {% endfor %}
-            </select>
-            <button id="upload-icon">Upload <i class="fa fa-upload"></i></button>
+            </select><br><br>
+            <input type="checkbox" name="chbx" value="checked">
+            <label for="vehicle1"> Add a new category </label>
+            <input type="text" id="new-catagory" name="newcatg" placeholder=" add here..">
+            <button id="upload-icon">Upload <i class="fa fa-upload"></i></button><br>
+
         </form>
         {% endif %}
     </div>
@@ -69,9 +74,9 @@
 
         <div class="gallery">
             {% for image in images %}
-                <div class="repeat">   
+                <div class="repeat"> 
+                    <p id="info">Catagory: {{image.catg}}</p>  
                     <p id="info">Posted on {{image.date}}</p>
-                    <p id="info">Catagory: {{image.catg}}</p>
                     <a href="{{image.photo.url}}">
                         <img src="{{image.photo.url}}" alt=""><br>
                     </a>
