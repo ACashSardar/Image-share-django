@@ -21,37 +21,49 @@
     </div>
 
     <div class="mobile-dash">
-            <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic">
-            <p>Username: {{userinfo.user}}</p>
-            <form action="#" method="post">
-                {% csrf_token %}
-                <p>Email</p>
-                <input type="text" name="email" placeholder="{{userinfo.email}}"><br><br>
-                <p>About</p>
-                <textarea name="about" id="" cols="25" rows="6">{{userinfo.about}}</textarea><br>
-                <input type="submit" name="save" value="OK"> <a href="/"> <i class="fa fa-save"></i> SAVE</a>
-            </form>
+        <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
+        <strong>Username:</strong> {{userinfo.user}}<br>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <strong>Email</strong><br>
+            <input type="text" name="email" placeholder="{{userinfo.email}}" value="{{userinfo.email}}"><br><br>
+            <strong>About</strong><br>
+            <textarea name="about" id="" cols="25" rows="6">{{userinfo.about}}</textarea><br>
+            <input type="submit" name="save" value="OK"> 
+            <button class="save-btn" ><a href="/"><i class="fa fa-save"></i> SAVE</a></button>
+        </form>
     </div>
 
     <div class="upload">
+        {% if not visitor %}
         <form action="/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file" name="photo" accept="image/*" placeholder="Choose an image">
-            <button id="upload-icon">Upload <i class="fa fa-upload"></i></button>
+            <select name="category" id="select-catagory">
+                {% for catg in category %}
+                    <option value="{{catg}}">{{catg}}</option>
+                {% endfor %}
+            </select><br><br>
+            <input type="checkbox" name="chbx" value="checked">
+            <label for="vehicle1"> Add a new category </label>
+            <input type="text" id="new-catagory" name="newcatg" placeholder=" add here..">
+            <button id="upload-icon">Upload <i class="fa fa-upload"></i></button><br>
         </form>
+        {% endif %}
     </div>
 
     <div class="grid-container">
         <div class="about-section">
                 <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
-                <p>Username: {{userinfo.user}}</p><br>
+                <strong>Username:</strong> {{userinfo.user}}<br>
                 <form action="#" method="post">
                     {% csrf_token %}
-                    <label>Email</label><br>
-                    <input type="text" name="email" placeholder="{{userinfo.email}}"><br><br>
-                    <label>About</label><br>
+                    <strong>Email</strong><br>
+                    <input type="text" name="email" placeholder="{{userinfo.email}}" value="{{userinfo.email}}"><br><br>
+                    <strong>About</strong><br>
                     <textarea name="about" id="" cols="25" rows="6">{{userinfo.about}}</textarea><br>
-                    <input type="submit" name="save" value="OK"> <a href="/"> <i class="fa fa-save"></i> SAVE</a>
+                    <input type="submit" name="save" value="OK"> 
+                    <button class="save-btn" ><a href="/"><i class="fa fa-save"></i> SAVE</a></button>
                 </form>
         </div>
 

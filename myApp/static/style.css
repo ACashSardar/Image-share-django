@@ -18,7 +18,7 @@
     left: 20%;
     padding: 10px;
     border-radius: 2px;
-    border:2px solid lavender;
+    border:2px solid darkslateblue;
   }
   .search-bar input[type='submit']{
     position:relative;
@@ -26,15 +26,15 @@
     left: 19%;
     padding: 10px;
     border-radius: 2px;
-    background: black;
+    background: darkslateblue;
     color: white;
-    border:2px solid black;
+    border:2px solid darkslateblue;
   }
 
   .search-bar input[type='submit']:hover{
-    background: lavender;
-    color: black;
-    border: 2px solid black;
+    background: white;
+    color: darkslateblue;
+    border: 2px solid darkslateblue;
   }
 
   .user-forms{
@@ -65,10 +65,10 @@
   }
   .user-forms input[type='submit']{
     width: 96%;
-    background: darkcyan;
+    background: darkslateblue;
     padding: 10px 10px;
     border-radius: 2px;
-    border: 1px solid darkcyan;
+    border: 1px solid darkslateblue;
     color:white;
   }
   .user-forms input[type='submit']:hover{
@@ -78,261 +78,293 @@
   }
 
   .app-name{
-      padding: 10px;
-      color: lightsteelblue;
-      background: black;
-      font-family: Helvetica, Arial, sans-serif;
-      text-align: center;
-      font-size: 20px;
-      line-height: 1.5;
-    }
+    padding: 10px;
+    color: lightsteelblue;
+    background: black;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.5;
+  }
 
-    .gallery {
-        display: grid;
-        position: relative;
-        left: 2%;
-        grid-template-columns: repeat(5, 20%);
-        grid-column-gap: 0px;
-        width: 96%;
-        text-align: right;
-        color: white;
-    }
-    .gallery img{
-      width: 100%;
-      height: 75%;
-      border-radius: 5px;
-      border: 1px solid white;
-    }
+  .gallery {
+    display: grid;
+    position: relative;
+    left: 2%;
+    grid-template-columns: repeat(5, 20%);
+    grid-column-gap: 0px;
+    width: 96%;
+    text-align: right;
+    color: white;
+  }
+  .gallery img{
+    width: 100%;
+    height: 75%;
+    border-radius: 5px;
+    border: 1px solid white;
+  }
 
-    #dwn{
-      padding:5px;
-      position: relative;
-      color: white;
-      margin-bottom: 0px;
-      margin-right: 2px;
-      background-color: darkslateblue;
-      border-radius: 2px;
-      border: 1px solid darkslateblue;
-    }
-    #dwn:hover{
-      color: slateblue;
-      background-color: inherit;
-      border: 2px solid slateblue;
-      }
-      
-    #del{
-      padding:5px;
-      position: relative;
-      color: white;margin-bottom: 0px;
-      background-color: crimson;
-      border-radius: 2px;
-      margin-right: 2px;
-      border: 1px solid crimson;
-    }
-    #del:hover{
-      color: crimson;
-      background-color: inherit;
-      border: 2px solid crimson;
-      }
-
-  .upload{
-      width: 100%;
-      position: relative;
-      padding:10px;
-      text-align: center;
-      font-family: Cambria;
-      background:inherit;
-      margin-bottom: 20px;
-    }
-
-   .upload select{
-       width:100px;
-       height: 40px;
-       color:black;
-       background-color: white;
-       border-radius: 5px;
-       border: 1px solid white;
-       margin-right: 10px;
-   }
-
-
-   #upload-icon{
-       color: white;
-       background-color: darkslateblue;
-       border-radius: 2px;
-       width:90px;height: 28px;
-       border:1px solid darkslateblue;
-   }
-   #upload-icon:hover{
+  #dwn{
+    padding:5px;
+    position: relative;
+    color: white;
+    margin-bottom: 0px;
+    margin-right: 2px;
+    background-color: darkslateblue;
+    border-radius: 2px;
+    border: 1px solid darkslateblue;
+  }
+  #dwn:hover{
     color: slateblue;
     background-color: inherit;
     border: 2px solid slateblue;
     }
+    
+  #del{
+    padding:5px;
+    position: relative;
+    color: white;margin-bottom: 0px;
+    background-color: crimson;
+    border-radius: 2px;
+    margin-right: 2px;
+    border: 1px solid crimson;
+  }
+  #del:hover{
+    color: crimson;
+    background-color: inherit;
+    border: 2px solid crimson;
+    }
 
-   .repeat{
-      background: inherit;
-      height: 100%;
-      font-family: Helvetica, Arial, sans-serif;
-   }
+  .upload{
+    width: 100%;
+    position: relative;
+    padding:10px;
+    text-align: center;
+    font-family: Cambria;
+    background:inherit;
+    margin-bottom: 20px;
+  }
 
-   #info{
-     color: black;
-     text-align: left;
-     position: relative;
-     left: 0%;
-     font-size: 12px;
-     margin-left: 2px;
-   }
+  .upload select{
+    width:100px;
+    height: 40px;
+    color:black;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    margin-right: 10px;
+  }
+
+
+  #upload-icon{
+    color: white;
+    background-color: darkslateblue;
+    border-radius: 2px;
+    width:90px;height: 28px;
+    border:1px solid darkslateblue;
+  }
+
+  #upload-icon:hover{
+    color: slateblue;
+    background-color: inherit;
+    border: 2px solid slateblue;
+  }
+
+  .repeat{
+    background: inherit;
+    height: 100%;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  #info{
+    color: black;
+    text-align: left;
+    position: relative;
+    left: 0%;
+    font-size: 12px;
+    margin-left: 2px;
+  }
 
    .container{
-     font-family: Cambria;
-     text-align: right;
-     padding: 10px;
-     background: lavender;
-   }
-   .container a{
+    font-family: Cambria;
+    text-align: right;
+    padding: 10px;
+    background: lavender;
+  }
+
+  .container a{
     color: black;
     text-decoration: none;
     margin-left:10px;
-   }
+  }
 
-   .about-section{
-     background: linear-gradient(to bottom right, slategray, darkslateblue);
-     border-radius: 2px;
-     padding: 15px;
-     font-family: Cambria;
-     margin-left: 10px;
-     color: white;
-   }
-   .about-section p{
+  .about-section{
+    background: linear-gradient(to bottom right, slategray, darkslateblue);
+    border-radius: 2px;
+    padding: 15px;
+    font-family: Cambria;
+    margin-left: 10px;
     color: white;
   }
-  .about-section a{
+  .about-section p,.mobile-dash p{
     color: white;
-    font-family: cursive;
+  }
+  .about-section a,.mobile-dash a{
+    color: white;
+    font-family: Cambria;
     text-decoration: none;
-    text-shadow: 1px 1px slategray;
   }
-  .about-section input[type='submit']{
-    width: 20%;
+  .about-section input[type='submit'],.mobile-dash input[type='submit']{
     background: white;
-    padding: 5px 10px;
+    padding: 5px 15px;
     border-radius: 2px;
     border: 1px solid white;
   }
   .about-section input[type='submit']:hover{
-    background-color: lavender;
+    background: lightcoral;
     color: black;
   }
-  .about-section textarea{
+  .mobile-dash input[type='submit']:hover{
+    background: lightcoral;
+    color: black;
+  }
+  .about-section textarea,.mobile-dash textarea{
     border-radius: 2px;
     font-family: Cambria;
     width: 95%;
     padding: 5px;
   }
 
-   .grid-container {
-      display: grid;
-      grid-template-columns: 1fr 4fr;
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
       
-    }
+  }
 
-    #profile-pic{
-      width: 40%;
-      position: relative;
-      left: 30%;
-      height: 110px;
-      border-radius: 50%;
-      border: 2px solid white;
-    }
+  #profile-pic{
+    width: 40%;
+    position: relative;
+    left: 30%;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
 
-    .my-posts{
-      text-align: center;
-      color: darkslateblue;
-      font-family: Cambria;
-    }
-    .mobile-dash{
-      display: none;
-    }
-    .catagory-list{
-      padding: 10px;
-      border-radius: 10px;
-      margin: 0px 5px;
-      background: white;
-    }
+  .my-posts{
+    text-align: center;
+    color: darkslateblue;
+    font-family: Cambria;
+  }
+  .mobile-dash{
+    display: none;
+  }
+  .catagory-list{
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0px 5px;
+    background: white;
+  }
 
-    .cat-items{
-      width:100%;
-      padding: 12px 4px;
-      background: lavender;
-      text-align: center;
-      border:1px solid white;
-      border-radius: 2px;
-      border: 1px solid lightgray;
-    }
-    .cat-items:hover{
-      background:  lightslategrey;
-      font-weight: bold;
-      color: white;
-    }
-    .cat-items a{
-      color: black;
-      text-decoration: none;
-      font-family: 'Trebuchet MS';
-      font-size: 15px;
-    }
-    #select-catagory, #new-catagory{
-      border: 1px solid gray;
-      height: 28px;
-      width: 100px;
-      border-radius: 2px;
-      padding: 5px;
-    }
+  .cat-items{
+    width:100%;
+    padding: 12px 4px;
+    background: lavender;
+    text-align: center;
+    border:1px solid white;
+    border-radius: 2px;
+    border: 1px solid lightgray;
+  }
+  .cat-items:hover{
+    background:  lightslategrey;
+    font-weight: bold;
+    color: white;
+  }
+  .cat-items a{
+    color: black;
+    text-decoration: none;
+    font-family: 'Trebuchet MS';
+    font-size: 15px;
+  }
+  #select-catagory, #new-catagory{
+    border: 1px solid gray;
+    height: 28px;
+    width: 100px;
+    border-radius: 2px;
+    padding: 5px;
+  }
 
+  .save-btn{
+    padding: 4px;
+    border-radius: 2px;
+    background: white;
+    border: 1px solid white;
+  }
+  .save-btn a{
+    color: black;
+    text-decoration: none;
+  }
+  .about-section button:hover{
+    background: lightgreen;
+    color:lightslategray;
+    
+  }
+  .mobile-dash button:hover{
+    background: lightgreen;
+    color:lightslategray;
+    
+  }
+  .footer {
+    background-color: black;
+    color: white;
+    font-family: 'Trebuchet MS';
+    text-align: center;
+    font-size: calc(10px + 0.5vw);
+    padding: 25px 0px;
+  }
+  
    @media only screen and (max-width: 600px){
-    .user-forms{
-      width: 90%;
-      left: 5%;
-    }
-    .user-forms p{
-      font-size: 13px;
-    }
-    .about-section{
-      display: none;
-      
-    }
-    .about-section a{
-      left:50%;
-      font-size: 15px;
-    }
-    .upload{
-      left: 2.5%;
-      width: 95%;
-    }
-    .gallery {
-      display: grid;
-      position: relative;
-      grid-template-columns: repeat(2, 49%);
-      grid-row-gap: 15px;
-      
-    }
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(1, 100%);
-      
-    }
-    .mobile-dash{
-      display:block;
-      background: linear-gradient(to bottom right, slategray, darkslateblue);;
-      border-radius: 2px;
-      padding: 25px;
-      font-family: Cambria;
-      margin: 10px;
-    }
-    .mobile-dash p{
-     color: white;
-   }
-   #profile-pic{
+  .user-forms{
+    width: 90%;
+    left: 5%;
+  }
+  .user-forms p{
+    font-size: 13px;
+  }
+  .about-section{
+    display: none;
+    
+  }
+  .about-section a{
+    left:50%;
+    font-size: 15px;
+  }
+  .upload{
+    left: 2.5%;
+    width: 95%;
+  }
+  .gallery {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(2, 49%);
+    grid-row-gap: 15px;
+    
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    
+  }
+  .mobile-dash{
+    display:block;
+    background: linear-gradient(to bottom right, slategray, darkslateblue);;
+    border-radius: 2px;
+    padding: 25px;
+    color: white;
+    font-family: Cambria;
+    margin: 10px;
+  }
+
+  #profile-pic{
     width: 29%;
     position: relative;
     left: 36%;
@@ -340,30 +372,8 @@
     border-radius: 50%;
     border: 2px solid white;
   }
-   .mobile-dash a{
-    color: white;
-    font-family: cursive;
-    text-decoration: none;
-    text-shadow: 1px 1px slategray;
-   }
-   .mobile-dash input[type='submit']{
-     width: 20%;
-     background: white;
-     padding: 5px 10px;
-     border-radius: 2px;
-     border: 1px solid white;
-   }
-   .mobile-dash input[type='submit']:hover{
-     background-color: lavender;
-     color: black;
-   }
-   .mobile-dash textarea{
-     border-radius: 2px;
-     font-family: Cambria;
-     width: 95%;
-     padding: 5px;
-   }
-   .search-bar input[type='text']{
+
+  .search-bar input[type='text']{
     width:60%;
     left: 10%;
     border: 2px solid lavender;

@@ -20,8 +20,9 @@
     </div>
 
     <div class="search-bar">
-        <form action="#">
-            <input type="text" placeholder="Enter an image catagory here..">
+        <form action="/manualsearch/" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Search here by catagory name.." name="searchbar">
             <input type="submit" value="SEARCH">
         </form>
     </div>
@@ -34,6 +35,7 @@
                 <h2>Catagories</h2><br><br>
             </div>
             <div class="cat-tiles">
+                <button class="cat-items"><a href="{% url 'catgsearch' 'allimg' %}" class="">All images</a></button>
                 {% for catg in category %}
                     <button class="cat-items"><a href="{% url 'catgsearch' catg %}" class="">{{catg}}</a></button>
                 {% endfor %}
@@ -59,6 +61,5 @@
         </div>
     </div> 
     <br><br>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

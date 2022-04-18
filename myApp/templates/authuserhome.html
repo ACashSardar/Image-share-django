@@ -20,8 +20,9 @@
         <a href="/logout/"><i class="fa fa-sign-out"></i> LOG OUT</a>
     </div>
     <div class="search-bar">
-        <form action="#">
-            <input type="text" placeholder="Enter an image catagory here..">
+        <form action="/manualsearch/" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Search here by catagory name.." name="searchbar">
             <input type="submit" value="SEARCH">
         </form>
     </div>
@@ -33,6 +34,7 @@
                 <h2>Catagories</h2><br><br>
             </div>
             <div class="cat-tiles">
+                <button class="cat-items"><a href="{% url 'catgsearch' 'allimg' %}" class="">All images</a></button>
                 {% for catg in category %}
                     <button class="cat-items"><a href="{% url 'catgsearch' catg %}" class="">{{catg}}</a></button>
                 {% endfor %}

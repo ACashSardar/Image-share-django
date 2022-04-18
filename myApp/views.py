@@ -2,8 +2,17 @@ from django.shortcuts import redirect, render
 from .models import Image,Profile, Category
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as UserLogin, logout as UserLogout
+from nltk.stem.porter import PorterStemmer
+
 
 # Create your views here.
+ps=PorterStemmer()
+def stem(text):
+    y=[]
+    for i in text.split():
+        y.append(ps.stem(i))
+
+    return " ".join(y)
 
 def home(request): 
     if request.method=="POST":
@@ -129,12 +138,30 @@ def onclick(request,username):
 def catgsearch(request,catg):
     allcatg=Category.objects.all()
     images=Image.objects.all()
-    for ac in allcatg:
-        if str(ac.title)==catg:
-            images=Image.objects.filter(catg=ac)
     category=Category.objects.all()
+    if catg=="allimg":
+        images=Image.objects.all()
+    else:
+        for ac in allcatg:
+            if str(ac.title)==catg:
+                images=Image.objects.filter(catg=ac)
     context={'images':images,'category':category,'visitor':True}
     if request.user.is_authenticated:
         return render(request,'authuserhome.html',context)
     return render(request,'homepage.html',context)
     
+def manualsearch(request):
+    userSearch=request.POST['searchbar']
+    userSearch=stem(userSearch)
+    userSearch = list(userSearch.split(" "))
+    allcatg=Category.objects.all()
+    images=Image.objects.none()
+    for ac in allcatg:
+        for word in userSearch:
+            if word in stem(str(ac.title)):
+                images=Image.objects.filter(catg=ac)
+    category=Category.objects.all()
+    context={'images':images,'category':category,'visitor':True}
+    if request.user.is_authenticated:
+        return render(request,'authuserhome.html',context)
+    return render(request,'homepage.html',context)

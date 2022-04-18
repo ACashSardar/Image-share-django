@@ -23,9 +23,9 @@
     <div class="mobile-dash">
         {% for ui in userinfo %}
             <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic">
-            <p><i class="fa fa-caret-right"></i><strong>Username: </strong>{{ui.user}}</p><br>
-            <p><i class="fa fa-caret-right"></i><strong>Email: </strong> {{ui.email}}</p><br>
-            <p><i class="fa fa-caret-right"></i><strong>About: </strong> {{ui.about}}</p><br>
+            <p><i class="fa fa-caret-right"></i><strong> Username: </strong>{{ui.user}}</p><br>
+            <p><i class="fa fa-caret-right"></i><strong> Email: </strong> {{ui.email}}</p><br>
+            <p><i class="fa fa-caret-right"></i><strong> About: </strong> {{ui.about}}</p><br>
         {% endfor %}
         {% if not visitor %}
             <a href="/editprofile/">Edit Profile <i class="fa fa-edit"></i></a><br>
@@ -46,7 +46,6 @@
             <label for="vehicle1"> Add a new category </label>
             <input type="text" id="new-catagory" name="newcatg" placeholder=" add here..">
             <button id="upload-icon">Upload <i class="fa fa-upload"></i></button><br>
-
         </form>
         {% endif %}
     </div>
@@ -63,9 +62,9 @@
         <div class="about-section">
             {% for ui in userinfo %}
             <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
-                <p><i class="fa fa-caret-right"></i><strong>Username: </strong>{{ui.user}}</p><br>
-                <p><i class="fa fa-caret-right"></i><strong>Email: </strong> {{ui.email}}</p><br>
-                <p><i class="fa fa-caret-right"></i><strong>About: </strong> {{ui.about}}</p><br>
+                <p><i class="fa fa-caret-right"></i><strong> Username: </strong>{{ui.user}}</p><br>
+                <p><i class="fa fa-caret-right"></i><strong> Email: </strong> {{ui.email}}</p><br>
+                <p><i class="fa fa-caret-right"></i><strong> About: </strong> {{ui.about}}</p><br>
             {% endfor %}
             {% if not visitor %}
                 <a href="/editprofile/">Edit Profile <i class="fa fa-edit"></i></a><br>

@@ -10,6 +10,7 @@ urlpatterns = [
     path('editprofile/', views.editprofile,name='editprofile'),
     path('onclick/<slug:username>', views.onclick,name='onclick'),
     path('catgsearch/<str:catg>', views.catgsearch,name='catgsearch'),
+    path('manualsearch/', views.manualsearch,name='manualsearch'),
     path('login/', views.login,name='login'),
     path('signup/', views.signup,name='signup'),
     path('logout/', views.logout,name='logout'),
