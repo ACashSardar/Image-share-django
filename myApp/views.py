@@ -4,7 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as UserLogin, logout as UserLogout
 from nltk.stem.porter import PorterStemmer
 
-
 # Create your views here.
 ps=PorterStemmer()
 def stem(text):
@@ -32,16 +31,22 @@ def home(request):
                 photo=Image.objects.create(photo=photo, user=request.user, catg=category)
 
     images=Image.objects.all()
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.method=="POST":
         images=Image.objects.filter(user=request.user)
         userinfo=Profile.objects.filter(user=request.user)
         category=Category.objects.all()
         print('Available categories',category)
         context={'images':images,'userinfo':userinfo,'category':category,'visitor':False}
         return render(request,'dashboard.html',context)
+    elif request.user.is_authenticated and request.method=="GET":
+        images=Image.objects.all()
+        userinfo=Profile.objects.filter(user=request.user)
+        category=Category.objects.all()
+        context={'images':images,'userinfo':userinfo,'category':category,'visitor':False,'registered':True}
+        return render(request,'homepage.html',context)
     else:
         category=Category.objects.all()
-        context={'images':images,'category':category}
+        context={'images':images,'category':category,'visitor':False,'registered':False}
         return render(request,'homepage.html',context)       
 
 def dashboard(request):
@@ -52,7 +57,6 @@ def dashboard(request):
     return render(request,'dashboard.html',context)
 
 def editprofile(request):
-    print('request.user.id',request.user.id)
     profile=Profile.objects.all()
     present=False
     for pr in profile:
@@ -72,10 +76,11 @@ def editprofile(request):
         redirect('dashboard')
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.get(user=request.user)
-    context={'images':images,'userinfo':userinfo}
+    category=Category.objects.all()
+    context={'images':images,'userinfo':userinfo,'category':category}
     return render(request,'editprofile.html',context)
 
-def delete(request,imageID):
+def delete(request,imageID,curr_page):
     try:
         item=Image.objects.get(pk=imageID)
         item.photo.delete()
@@ -85,7 +90,11 @@ def delete(request,imageID):
     category=Category.objects.all()
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.filter(user=request.user)
-    context={'images':images,'userinfo':userinfo, 'category':category}
+    context={'images':images,'userinfo':userinfo, 'category':category,'registered':True}
+    if curr_page=='homepage':
+        images=Image.objects.all()
+        context={'images':images,'userinfo':userinfo, 'category':category,'registered':True}
+        return render(request,'homepage.html',context)
     return render(request,'dashboard.html',context)
 
 def login(request):
@@ -107,7 +116,6 @@ def signup(request):
         context={'form':form}
         if form.is_valid():
             form.save()
-            # Profile.objects.create(user=request.user,email='None@gmail.com')
             return redirect('login')
         else:
             return render(request,"signup.html",context)
@@ -117,12 +125,6 @@ def logout(request):
     UserLogout(request)
     print('logged out')
     return redirect('signup')
-
-def authuserhome(request):
-    images=Image.objects.all()
-    category=Category.objects.all()
-    context={'images':images,'category':category}
-    return render(request,'authuserhome.html',context)
 
 def onclick(request,username):
     allprof=Profile.objects.all()
@@ -145,9 +147,7 @@ def catgsearch(request,catg):
         for ac in allcatg:
             if str(ac.title)==catg:
                 images=Image.objects.filter(catg=ac)
-    context={'images':images,'category':category,'visitor':True}
-    if request.user.is_authenticated:
-        return render(request,'authuserhome.html',context)
+    context={'images':images,'category':category,'visitor':False,'registered':request.user.is_authenticated}
     return render(request,'homepage.html',context)
     
 def manualsearch(request):
@@ -161,7 +161,27 @@ def manualsearch(request):
             if word in stem(str(ac.title)):
                 images=Image.objects.filter(catg=ac)
     category=Category.objects.all()
-    context={'images':images,'category':category,'visitor':True}
+    context={'images':images,'category':category,'visitor':False,'registered':request.user.is_authenticated}
+    return render(request,'homepage.html',context)
+
+
+def selectimg(request,catg,id):
+    print(catg,id)
+    images=Image.objects.none()
+    category=Category.objects.get(title=catg)
+    images=Image.objects.filter(catg=category)
+    selectedimg=images.get(id=id)
+    images=images.exclude(id=id)
+    profile=Profile.objects.get(user=selectedimg.user)
+    visitor=True
+    registered=False
     if request.user.is_authenticated:
-        return render(request,'authuserhome.html',context)
+        registered=True
+    if str(request.user)==str(selectedimg.user):
+        visitor=False
+        registered=True
+    select=True
+    category=Category.objects.all()
+    context={'images':images,'category':category,'visitor':visitor,'selectedimg':selectedimg,'select':select,'profile':profile,'registered':registered}
+    select=False
     return render(request,'homepage.html',context)

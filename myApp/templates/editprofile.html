@@ -11,26 +11,26 @@
 </head>
 <body>
     <div class="app-name">
-        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE</h2>
+        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE <i class="fa fa-share-alt"></i></h2>
     </div>
 
     <div class="container">
         <a href="#"><i class="fa fa-user-circle"></i> {{user}}</a>
-        <a href="/authuserhome/"><i class="fa fa-home"></i> HOME</a>
+        <a href="/home/"><i class="fa fa-home"></i> HOME</a>
         <a href="/logout/"><i class="fa fa-sign-out"></i> LOG OUT</a>
     </div>
 
     <div class="mobile-dash">
         <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
-        <strong>Username:</strong> {{userinfo.user}}<br>
+        <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}{{userinfo.user}}</p><br>
         <form action="#" method="post">
             {% csrf_token %}
-            <strong>Email</strong><br>
+            <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong></p>
             <input type="text" name="email" placeholder="{{userinfo.email}}" value="{{userinfo.email}}"><br><br>
-            <strong>About</strong><br>
+            <p><i class="fa fa-info-circle"></i><strong> About: </strong></p>
             <textarea name="about" id="" cols="25" rows="6">{{userinfo.about}}</textarea><br>
             <input type="submit" name="save" value="OK"> 
-            <button class="save-btn" ><a href="/"><i class="fa fa-save"></i> SAVE</a></button>
+            <button class="save-btn" ><a href="/dashboard/"><i class="fa fa-save"></i> SAVE</a></button>
         </form>
     </div>
 
@@ -55,21 +55,21 @@
     <div class="grid-container">
         <div class="about-section">
                 <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
-                <strong>Username:</strong> {{userinfo.user}}<br>
+                <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}{{userinfo.user}}</p><br>
                 <form action="#" method="post">
                     {% csrf_token %}
-                    <strong>Email</strong><br>
+                    <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong></p>
                     <input type="text" name="email" placeholder="{{userinfo.email}}" value="{{userinfo.email}}"><br><br>
-                    <strong>About</strong><br>
+                    <p><i class="fa fa-info-circle"></i><strong> About: </strong></p>
                     <textarea name="about" id="" cols="25" rows="6">{{userinfo.about}}</textarea><br>
                     <input type="submit" name="save" value="OK"> 
-                    <button class="save-btn" ><a href="/"><i class="fa fa-save"></i> SAVE</a></button>
+                    <button class="save-btn" ><a href="/dashboard/"><i class="fa fa-save"></i> SAVE</a></button>
                 </form>
         </div>
 
-        <div class="gallery">
+        <div class="gallery-user-profile">
             {% for image in images %}
-                <div class="repeat">   
+                <div class="repeat"> 
                     <p id="info">Catagory: {{image.catg}}</p>  
                     <p id="info">Posted on {{image.date}}</p>
                     <a href="{{image.photo.url}}">
@@ -77,7 +77,7 @@
                     </a>
                     <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
                     {% if not visitor %}
-                    <a href="{% url 'delete' image.id %}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
+                    <a href="{% url 'delete' image.id 'dashboard'%}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
                     {% endif %}
                     <br><br>
                 </div>
