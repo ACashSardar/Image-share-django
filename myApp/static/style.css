@@ -1,470 +1,495 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: white;
+}
+.search-bar{
+  padding: 10px;
+  font-family: Calibri light;
+  color: black;
+}
+
+.search-bar input[type='text']{
+  position:relative;
+  width:60%;
+  left: 20%;
+  padding: 10px;
+  border-radius: 2px;
+  border:2px solid darkslateblue;
+}
+.search-bar input[type='submit']{
+  position:relative;
+  width:80px;
+  left: 19%;
+  padding: 10px;
+  border-radius: 2px;
+  background: darkslateblue;
+  color: white;
+  border:2px solid darkslateblue;
+}
+
+.search-bar input[type='submit']:hover{
+  background: white;
+  color: darkslateblue;
+  transition-delay: 50ms, 50ms;
+  border: 2px solid darkslateblue;
+}
+
+.user-forms{
+  position: relative;
+  left:35%;width:30%;
+  background:lavender;
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 4px;
+  font-family: calibri light;
+}
+.user-forms label,h1,p,a{
+  color: black;
+  font-family: Calibri Light;;
+}
+.user-forms label{
+  font-size: 20px;
+}
+.user-forms input[type='text'],input[type='password'],.about-section input[type='text'],.mobile-dash input[type='text']{
+  background: white;
+  width: 95%;
+  padding: 8px 2px;
+  margin: 2px;
+  border-radius: 2px;
+  border: 1px solid white;
+  color:darkslateblue;
+  font-family: calibri light;
+}
+.user-forms input[type='submit']{
+  width: 96%;
+  background: darkslateblue;
+  padding: 10px 10px;
+  border-radius: 2px;
+  border: 1px solid darkslateblue;
+  color:white;
+}
+.user-forms input[type='submit']:hover{
+  background: white;
+  color:darkslateblue;
+  transition-delay: 50ms, 50ms;
+  border: 1px solid white;
+}
+
+.app-name{
+  padding: 10px;
+  color: white;
+  background: rgb(20, 20, 20);
+  font-family: Jetbrains Mono;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.gallery,.photo_comments,.gallery-user-profile {
+  display: grid;
+  position: relative;
+  left: 2%;
+  grid-template-columns: repeat(5, 20%);
+  grid-column-gap: 0px;
+  width: 96%;
+  text-align: right;
+  color: white;
+}
+.gallery img{
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  border: 1px solid white;
+}
+.gallery-user-profile img{
+  width: 100%;
+  height: 70%;
+  border-radius: 2px;
+  border: 1px solid white;
+}
+
+
+#dwn{
+  padding:5px;
+  position: relative;
+  color: darkslateblue;
+  margin-bottom: 0px;
+  margin-right: 2px;
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-size:calc(9px + 0.5vw);
+}
+#dwn:hover{
+  color: blue;
+  font-weight: bold;
+  transition-delay: 50ms, 50ms;
   }
-  body {
-    background: white;
-  }
-  .search-bar{
-    padding: 10px;
-    font-family: Calibri light;
-    color: black;
+  
+#del{
+  padding:5px;
+  position: relative;
+  color: crimson;margin-bottom: 0px;
+  background-color: white;
+  border-radius: 2px;
+  margin-right: 2px;
+  border: 1px solid white;
+  font-size:calc(9px + 0.5vw);
+}
+#del:hover{
+  color: orangered;
+  font-weight: bold;
+  transition-delay: 50ms, 50ms;
   }
 
-  .search-bar input[type='text']{
-    position:relative;
-    width:60%;
-    left: 20%;
-    padding: 10px;
-    border-radius: 2px;
-    border:2px solid darkslateblue;
-  }
-  .search-bar input[type='submit']{
-    position:relative;
-    width:80px;
-    left: 19%;
-    padding: 10px;
-    border-radius: 2px;
-    background: darkslateblue;
-    color: white;
-    border:2px solid darkslateblue;
-  }
+.upload{
+  width: 100%;
+  position: relative;
+  padding:10px;
+  text-align: center;
+  font-family: Calibri Light;
+  background:inherit;
+  margin-bottom: 20px;
+}
 
-  .search-bar input[type='submit']:hover{
-    background: white;
-    color: darkslateblue;
-    border: 2px solid darkslateblue;
-  }
-
-  .user-forms{
-    position: relative;
-    left:35%;width:30%;
-    background:lavender;
-    padding: 30px;
-    margin-top: 40px;
-    border-radius: 4px;
-    font-family: calibri light;
-  }
-  .user-forms label,h1,p,a{
-    color: black;
-    font-family: inherit;
-  }
-  .user-forms label{
-    font-size: 20px;
-  }
-  .user-forms input[type='text'],input[type='password'],.about-section input[type='text'],.mobile-dash input[type='text']{
-    background: white;
-    width: 95%;
-    padding: 8px 2px;
-    margin: 2px;
-    border-radius: 2px;
-    border: 1px solid white;
-    color:darkslateblue;
-    font-family: calibri light;
-  }
-  .user-forms input[type='submit']{
-    width: 96%;
-    background: darkslateblue;
-    padding: 10px 10px;
-    border-radius: 2px;
-    border: 1px solid darkslateblue;
-    color:white;
-  }
-  .user-forms input[type='submit']:hover{
-    background: white;
-    color:darkslateblue;
-    border: 1px solid white;
-  }
-
-  .app-name{
-    padding: 10px;
-    color: white;
-    background: black;
-    font-family: Helvetica, Arial, sans-serif;
-    text-align: center;
-    font-size: 20px;
-    line-height: 1.5;
-  }
-
-  .gallery,.photo_comments,.gallery-user-profile {
-    display: grid;
-    position: relative;
-    left: 2%;
-    grid-template-columns: repeat(5, 20%);
-    grid-column-gap: 0px;
-    width: 96%;
-    text-align: right;
-    color: white;
-  }
-  .gallery img{
-    width: 100%;
-    height: 100%;
-    border-radius: 2px;
-    border: 1px solid white;
-  }
-  .gallery-user-profile img{
-    width: 100%;
-    height: 70%;
-    border-radius: 2px;
-    border: 1px solid white;
-  }
+.upload select{
+  width:100px;
+  height: 40px;
+  color:black;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid white;
+  margin-right: 10px;
+}
 
 
-  #dwn{
-    padding:5px;
-    position: relative;
-    color: darkslateblue;
-    margin-bottom: 0px;
-    margin-right: 2px;
-    background-color: white;
-    border-radius: 2px;
-    border: 1px solid white;
-    font-size:calc(9px + 0.5vw);
-  }
-  #dwn:hover{
-    color: blue;
-    font-weight: bold;
-    }
+#upload-icon{
+  color: white;
+  background-color: darkslateblue;
+  border-radius: 2px;
+  width:90px;height: 28px;
+  border:1px solid darkslateblue;
+}
+
+#upload-icon:hover{
+  color: slateblue;
+  background-color: inherit;
+  border: 2px solid slateblue;
+  transition-delay: 50ms, 50ms;
+}
+
+.repeat{
+  background: inherit;
+  height: 100%;
+  font-family: Calibri Light;
+}
+
+.repeat img:hover {
+  transition-delay: 25ms, 25ms;
+  transform: scale(1.05); 
+  border: 0px;
+  border-radius: 10px;
+
+  
+}
+#info{
+  color: black;
+  text-align: left;
+  position: relative;
+  left: 0%;
+  font-size: 12px;
+  margin-left: 2px;
+}
+
+ .container{
+  font-family: Calibri Light;
+  text-align: right;
+  padding: 10px;
+  background: lavender;
+}
+
+.container a{
+  color: black;
+  text-decoration: none;
+  margin-left:10px;
+}
+
+.about-section{
+  background: url(https://www.pngmagic.com/product_images/high-resolution-purple-gradient-background-hd-PSD-free-download.jpg);
+  border-radius: 2px;
+  padding: 20px;
+  font-family:Calibri Light;
+  margin-left: 10px;
+  color: white;
+  position: relative;
+  height: 94%;top:6%;
+}
+.about-section p,.mobile-dash p{
+  color: white;
+}
+.about-section a,.mobile-dash a{
+  color: white;
+  text-decoration: none;
+}
+.about-section input[type='submit'],.mobile-dash input[type='submit']{
+  background: white;
+  padding: 4px 15px;
+  border-radius: 2px;
+  border: 1px solid white;
+}
+.about-section input[type='submit']:hover{
+  background: yellow;
+  color: black;
+  border: 1px solid yellow;
+  transition-delay: 50ms, 50ms;
+}
+.mobile-dash input[type='submit']:hover{
+  background: yellow;
+  color: black;
+  border: 1px solid yellow;
+  transition-delay: 50ms, 50ms;
+}
+
+textarea{
+  border-radius: 2px;
+  font-family: Calibri Light;
+  width: 95%;
+  padding: 5px;
+}
+.upload textarea{
+  margin-right: 8px;
+  margin-top: 5px;
+  width:357px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
     
-  #del{
-    padding:5px;
-    position: relative;
-    color: crimson;margin-bottom: 0px;
-    background-color: white;
-    border-radius: 2px;
-    margin-right: 2px;
-    border: 1px solid white;
-    font-size:calc(9px + 0.5vw);
-  }
-  #del:hover{
-    color: orangered;
-    font-weight: bold;
-    }
+}
 
-  .upload{
-    width: 100%;
-    position: relative;
-    padding:10px;
-    text-align: center;
-    font-family: Cambria;
-    background:inherit;
-    margin-bottom: 20px;
-  }
+#profile-pic{
+  width: 40%;
+  position: relative;
+  left: 30%;
+  height: 110px;
+  border-radius: 50%;
+  border: 2px solid inherit;
+}
 
-  .upload select{
-    width:100px;
-    height: 40px;
-    color:black;
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid white;
-    margin-right: 10px;
-  }
+.my-posts{
+  text-align: center;
+  color: darkslateblue;
+  font-family: Calibri Light;
+}
+.mobile-dash{
+  display: none;
+}
+.catagory-list{
+  padding:5px;
+  border-radius: 10px;
+  margin: 0px 5px;
+  background: white;
+}
 
+.tiles{
+  padding: 4px;
+}
+.cat-items{
+  width:100%;
+  padding: 12px 4px;
+  background: lavender;
+  text-align: center;
+  border:1px solid white;
+  border-radius: 2px;
+  border: 1px solid lightgray;
+}
+.cat-items:hover{
+  background:  lightslategrey;
+  font-weight: bold;
+  color: white;
+  transition-delay: 50ms, 50ms;
+}
+.cat-items a{
+  color: black;
+  text-decoration: none;
+  font-family: Calibri Light;
+  font-size: 15px;
+}
+#select-catagory, #new-catagory{
+  border: 1px solid gray;
+  height: 28px;
+  width: 100px;
+  border-radius: 2px;
+  padding: 5px;
+}
 
-  #upload-icon{
-    color: white;
-    background-color: darkslateblue;
-    border-radius: 2px;
-    width:90px;height: 28px;
-    border:1px solid darkslateblue;
-  }
+.save-btn{
+  padding: 4px;
+  border-radius: 2px;
+  background: white;
+  border: 1px solid white;
+}
+.save-btn a{
+  color: black;
+  text-decoration: none;
+}
+.about-section button:hover{
+  background: yellow;
+  border: 1px solid yellow;
+  transition-delay: 50ms, 50ms;
+  
+}
+.mobile-dash button:hover{
+  background: yellow;
+  border: 1px solid yellow;
+  transition-delay: 50ms, 50ms;
+  
+}
 
-  #upload-icon:hover{
-    color: slateblue;
-    background-color: inherit;
-    border: 2px solid slateblue;
-  }
+.photo_comments{
+  display: grid;
+  position: relative;
+  left: 2%;
+  grid-template-columns: 1.4fr 0.6fr;
+  grid-column-gap: 0px;
+  width: 96%;
+  text-align: center;
+  color: white;
+}
 
-  .repeat{
-    background: inherit;
-    height: 100%;
-    font-family: Cambria;
-  }
+.frame{
+  position: relative;
+  
 
-  .repeat img:hover {
-    transition-delay: 25ms, 25ms;
-    transform: scale(1.05); 
-    border: 0px;
-    border-radius: 10px;
+}
+.frame img{
+  width: 100%;
+  border: 4px solid white;
+}
 
-    
-  }
-  #info{
-    color: black;
-    text-align: left;
-    position: relative;
-    left: 0%;
-    font-size: 12px;
-    margin-left: 2px;
-  }
+.comment-section{
+  color: black;
+  font-family: Calibri Light;
+  font-size: calc(10px + 0.5vw);
+  padding-top:5px;
+}
+.comment-section h2{
+  color: black;
+}
 
-   .container{
-    font-family: Cambria;
-    text-align: right;
-    padding: 10px;
-    background: lavender;
-  }
+.pic-name-email{
+  display: grid;
+  position: relative;
+  grid-template-columns: 0.4fr 1.6fr;
+  grid-column-gap: 0px;
+  padding-left: 18%;
+}
 
-  .container a{
-    color: black;
-    text-decoration: none;
-    margin-left:10px;
-  }
+.section1{
+  background: purple;
+  border-radius: 48%;
+  padding: 5px;
+}
+.section2{
+  text-align: left;
+  font-size: calc(10px + 0.5vw);
+  padding: 5px;
+}
+.comment-section a{
+  text-decoration: none;
+}
+ @media only screen and (max-width: 600px){
+.user-forms{
+  width: 90%;
+  left: 5%;
+}
+.user-forms p{
+  font-size: 13px;
+}
+.about-section{
+  display: none;
+  
+}
+.about-section a{
+  left:50%;
+  font-size: 15px;
+}
+.upload{
+  left: 2.5%;
+  width: 95%;
+}
+.gallery,.grid-container,.gallery-user-profile{
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(2, 49%);
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+}
+.mobile-dash{
+  display:block;
+  background: url(https://www.pngmagic.com/product_images/high-resolution-purple-gradient-background-hd-PSD-free-download.jpg);
+  border-radius: 2px;
+  padding: 30px;
+  color: white;
+  font-family: Calibri Light;
+  margin: 10px;
+}
 
-  .about-section{
-    background: linear-gradient(to bottom right,darkslateblue, navy);
-    border-radius: 2px;
-    padding: 20px;
-    font-family:Calibri Light;
-    margin-left: 10px;
-    color: white;
-  }
-  .about-section p,.mobile-dash p{
-    color: white;
-  }
-  .about-section a,.mobile-dash a{
-    color: white;
-    text-decoration: none;
-  }
-  .about-section input[type='submit'],.mobile-dash input[type='submit']{
-    background: white;
-    padding: 5px 15px;
-    border-radius: 2px;
-    border: 1px solid white;
-  }
-  .about-section input[type='submit']:hover{
-    background: lavender;
-    color: black;
-  }
-  .mobile-dash input[type='submit']:hover{
-    background: lavender;
-    color: black;
-  }
-  .about-section textarea,.mobile-dash textarea{
-    border-radius: 2px;
-    font-family: Cambria;
-    width: 95%;
-    padding: 5px;
-  }
+#profile-pic{
+  width: 29%;
+  position: relative;
+  left: 36%;
+  height: 110px;
+  border-radius: 50%;
+}
 
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-      
-  }
-
-  #profile-pic{
-    width: 40%;
-    position: relative;
-    left: 30%;
-    height: 110px;
-    border-radius: 50%;
-    border: 2px solid inherit;
-  }
-
-  .my-posts{
-    text-align: center;
-    color: darkslateblue;
-    font-family: Cambria;
-  }
-  .mobile-dash{
-    display: none;
-  }
-  .catagory-list{
-    padding: 10px;
-    border-radius: 10px;
-    margin: 0px 5px;
-    background: white;
-  }
-
-  .cat-items{
-    width:100%;
-    padding: 12px 4px;
-    background: lavender;
-    text-align: center;
-    border:1px solid white;
-    border-radius: 2px;
-    border: 1px solid lightgray;
-  }
-  .cat-items:hover{
-    background:  lightslategrey;
-    font-weight: bold;
-    color: white;
-  }
-  .cat-items a{
-    color: black;
-    text-decoration: none;
-    font-family: 'Trebuchet MS';
-    font-size: 15px;
-  }
-  #select-catagory, #new-catagory{
-    border: 1px solid gray;
-    height: 28px;
-    width: 100px;
-    border-radius: 2px;
-    padding: 5px;
-  }
-
-  .save-btn{
-    padding: 4px;
-    border-radius: 2px;
-    background: white;
-    border: 1px solid white;
-  }
-  .save-btn a{
-    color: black;
-    text-decoration: none;
-  }
-  .about-section button:hover{
-    background: lavender;
-    color:lightslategray;
-    
-  }
-  .mobile-dash button:hover{
-    background: lavender;
-    color:lightslategray;
-    
-  }
-  .footer {
-    background-color: black;
-    color: white;
-    font-family: 'Trebuchet MS';
-    text-align: center;
-    font-size: calc(10px + 0.5vw);
-    padding: 25px 0px;
-  }
-
-  .photo_comments{
-    display: grid;
-    position: relative;
-    left: 2%;
-    grid-template-columns: 1.4fr 0.6fr;
-    grid-column-gap: 0px;
-    width: 96%;
-    text-align: center;
-    color: white;
-  }
-
-  .frame{
-    position: relative;
-    
-
-  }
-  .frame img{
-    width: 100%;
-    border: 4px solid white;
-  }
-
-  .comment-section{
-    color: black;
-    font-family: 'Segoe UI';
-    font-size: calc(10px + 0.5vw);
-    padding-top:10%;
-  }
-  .comment-section h2{
-    color: black;
-  }
-
-  .pic-name-email{
-    display: grid;
-    position: relative;
-    grid-template-columns: 0.4fr 1.6fr;
-    grid-column-gap: 0px;
-    padding-left: 18%;
-  }
-
-  .section1{
-    background: purple;
-    border-radius: 48%;
-    padding: 5px;
-  }
-  .section2{
-    text-align: left;
-    font-size: calc(10px + 0.5vw);
-    padding: 5px;
-  }
-  .comment-section a{
-    text-decoration: none;
-  }
-   @media only screen and (max-width: 600px){
-  .user-forms{
-    width: 90%;
-    left: 5%;
-  }
-  .user-forms p{
-    font-size: 13px;
-  }
-  .about-section{
-    display: none;
-    
-  }
-  .about-section a{
-    left:50%;
-    font-size: 15px;
-  }
-  .upload{
-    left: 2.5%;
-    width: 95%;
-  }
-  .gallery,.grid-container,.gallery-user-profile{
-    display: grid;
-    position: relative;
-    grid-template-columns: repeat(2, 49%);
-  }
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(1, 100%);
-  }
-  .mobile-dash{
-    display:block;
-    background: linear-gradient(to bottom right,darkslateblue, navy);
-    border-radius: 2px;
-    padding: 30px;
-    color: white;
-    font-family: Calibri Light;
-    margin: 10px;
-  }
-
-  #profile-pic{
-    width: 29%;
-    position: relative;
-    left: 36%;
-    height: 110px;
-    border-radius: 50%;
-  }
-
-  .search-bar input[type='text']{
-    left: 10%;
-  }
-  .search-bar input[type='submit']{
-    position:relative;
-    width:80px;
-    left: 8%;
-  }
-  .cat-tiles{
-    display: grid;
-    position: relative;
-    grid-template-columns: repeat(4, 25%);
-    grid-row-gap: 0px;
-  }
-  .cat-items a{
-    text-decoration: none;
-    font-family: Cambria;
-    font-size: 14px;
-  }
-  .pic-name-email{
-    padding-left: 0%;
-  }
-  .section1{
-    background: purple;
-    border-radius: 48%;
-    padding: 1px 8px;
-  }
-  .section2{
-    font-size: calc(8px + 0.5vw);
-  }
-  }
-
-
+.search-bar input[type='text']{
+  left: 10%;
+}
+.search-bar input[type='submit']{
+  position:relative;
+  width:80px;
+  left: 8%;
+}
+.cat-tiles{
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(4, 25%);
+  grid-row-gap: 0px;
+}
+.cat-items a{
+  text-decoration: none;
+  font-family: Calibri Light;
+  font-size: 14px;
+}
+.section1{
+  background: purple;
+  height: 45px;
+  width: 45px;
+  padding: 8px;
+  position: relative;
+  left: 60%;
+}
+.section2{
+  padding-left: 5px;
+}
+.photo_comments{
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+.pic-name-email{
+  text-align: center;
+  margin-top: 0px;
+  margin-left: 0px;
+  grid-template-columns: 0.6fr 1.2fr;
+}
+}

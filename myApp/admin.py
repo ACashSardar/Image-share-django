@@ -4,7 +4,7 @@ from .models import Image,Profile, Category
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    list_display=['id','photo','user','catg','date']
+    list_display=['id','photo','user','capt','catg','date']
     
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):

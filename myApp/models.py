@@ -8,8 +8,10 @@ class Profile(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     email=models.EmailField(blank=True, null=True)
     about=models.TextField(blank=True, null=True)
+    followers=models.ManyToManyField(User,related_name='followers',blank=True)
+    followings=models.ManyToManyField(User,related_name='followings',blank=True)
     def __str__(self):
-        return str(self.user) 
+        return str(self.user)
 
 class Category(models.Model):
     title=models.CharField(max_length=100)
@@ -20,6 +22,7 @@ class Image(models.Model):
     photo=models.ImageField(upload_to="allimages")
     date=models.DateTimeField(auto_now_add=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+    capt=models.TextField(blank=True, null=True)
     catg=models.ForeignKey(Category,on_delete=models.CASCADE)
     def __str__(self):
         return str(self.user)

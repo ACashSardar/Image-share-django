@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="app-name">
-        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE <i class="fa fa-share-alt"></i></h2>
+        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE <i class="fa fa-cloud-upload"></i></h2>
     </div>
 
     <div class="container">
@@ -44,13 +44,22 @@
                     <option value="{{catg}}">{{catg}}</option>
                 {% endfor %}
             </select><br><br>
+            <textarea name="caption" id="" cols="46" rows="3" placeholder=" Add a caption for the image"></textarea><br>
             <input type="checkbox" name="chbx" value="checked">
             <label for="vehicle1"> Add a new category </label>
-            <input type="text" id="new-catagory" name="newcatg" placeholder=" add here..">
+            <input type="text" id="new-catagory" name="newcatg" placeholder="Category name">
             <button id="upload-icon">Upload <i class="fa fa-upload"></i></button><br>
         </form>
         {% endif %}
     </div>
+    
+    <div class="my-posts">
+        {% if not visitor %}
+        <h2><i class="fa fa-image"></i> My Posts</h2>
+        {% else %}
+        <h2><i class="fa fa-image"></i> {{userinfo.first}}'s Posts</h2>
+        {% endif %}
+    </div><br>
 
     <div class="grid-container">
         <div class="about-section">
@@ -75,6 +84,7 @@
                     <a href="{{image.photo.url}}">
                         <img src="{{image.photo.url}}" alt=""><br>
                     </a>
+                    <h5 id="info">{{image.capt}}</h5>
                     <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
                     {% if not visitor %}
                     <a href="{% url 'delete' image.id 'dashboard'%}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  

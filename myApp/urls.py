@@ -11,6 +11,7 @@ urlpatterns = [
     path('catgsearch/<str:catg>', views.catgsearch,name='catgsearch'),
     path('manualsearch/', views.manualsearch,name='manualsearch'),
     path('selectimg/<str:catg>/<int:id>', views.selectimg,name='selectimg'),
+    path('follow/<int:profileID>',views.follow,name='follow'),
     path('login/', views.login,name='login'),
     path('signup/', views.signup,name='signup'),
     path('logout/', views.logout,name='logout'),

@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="app-name">
-        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE <i class="fa fa-share-alt"></i></h2>
+        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE <i class="fa fa-cloud-upload"></i></h2>
     </div>
 
     <div class="container">
@@ -59,6 +59,7 @@
                         </a>
                     </div>
                     <div class="comment-section">
+                        <h3>{{selectedimg.capt}}</h3>
                         <a href="{% url 'onclick' selectedimg.user %}">
                         <div class="pic-name-email">
                             <div class="section1">
@@ -70,6 +71,7 @@
                             </div>
                         </div></a>
                         <br>
+                        <p>Followers: {{profile.followers.count}}, Followings: {{profile.followings.count}}</p><br>
                         <p>
                             <label><i>Posted on <br>{{selectedimg.date}}</i></label>
                         </p>

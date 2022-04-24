@@ -15,9 +15,11 @@ def stem(text):
 
 def home(request): 
     if request.method=="POST":
-        photo=request.FILES['photo']
         checkbox=None
+        photo=None
+        capt=request.POST['caption']
         try:
+            photo=request.FILES['photo']
             checkbox=request.POST['chbx']
         except:
             print('checkbox=',checkbox)
@@ -26,9 +28,9 @@ def home(request):
         if photo:
             if checkbox and newcatg:
                 category=Category.objects.create(title=newcatg)
-                photo=Image.objects.create(photo=photo, user=request.user, catg=category)
+                photo=Image.objects.create(photo=photo, user=request.user,capt=capt, catg=category)
             else:
-                photo=Image.objects.create(photo=photo, user=request.user, catg=category)
+                photo=Image.objects.create(photo=photo, user=request.user,capt=capt, catg=category)
 
     images=Image.objects.all()
     if request.user.is_authenticated and request.method=="POST":
@@ -128,13 +130,29 @@ def logout(request):
 
 def onclick(request,username):
     allprof=Profile.objects.all()
+    member=False
+    follow=False
+    visitor=True
+    targetuser=None
+    followedBy=None
     for ap in allprof:
-        print(ap.user," ",username)
         if str(ap.user)==username:
             images=Image.objects.filter(user=ap.user)
             category=Category.objects.all()
             userinfo=Profile.objects.filter(user=ap.user)
-    context={'images':images,'userinfo':userinfo,'category':category,'visitor':True}
+            targetuser=ap
+            break
+    for ap in allprof:
+        if str(ap.user)==str(request.user):
+            followedBy=ap
+            break
+    if request.user.is_authenticated:
+        member=True
+    if str(targetuser.user)==str(request.user):
+        visitor=False
+    if member and targetuser.user in followedBy.followings.all():
+        follow=True
+    context={'images':images,'userinfo':userinfo,'category':category,'visitor':visitor,'follow':follow, 'member':member}
     return render(request,'dashboard.html',context)
 
 def catgsearch(request,catg):
@@ -185,3 +203,30 @@ def selectimg(request,catg,id):
     context={'images':images,'category':category,'visitor':visitor,'selectedimg':selectedimg,'select':select,'profile':profile,'registered':registered}
     select=False
     return render(request,'homepage.html',context)
+
+def follow(request,profileID):
+    profile=Profile.objects.get(id=profileID)
+    follow=False
+    allprof=Profile.objects.all()
+    for ap in allprof:
+        if str(ap.user)==str(request.user):
+            followedBy=ap
+            break
+
+    if profile.user in followedBy.followings.all():
+        profile.followers.remove(followedBy.user)
+        followedBy.followings.remove(profile.user)
+        follow=False
+        print('Unfollowed')
+    
+    else:
+        profile.followers.add(followedBy.user)
+        followedBy.followings.add(profile.user)
+        follow=True
+        print('Followed')
+    images=Image.objects.filter(user=profile.user)
+    category=Category.objects.all()
+    userinfo=Profile.objects.filter(user=profile.user)
+    context={'images':images,'userinfo':userinfo,'category':category,'visitor':True, 'follow':follow,'member':True}
+    return render(request,'dashboard.html',context)
+    

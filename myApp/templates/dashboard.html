@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="app-name">
-        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE <i class="fa fa-share-alt"></i></h2>
+        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE <i class="fa fa-cloud-upload"></i></h2>
     </div>
 
     <div class="container">
@@ -22,14 +22,23 @@
 
     <div class="mobile-dash">
         {% for ui in userinfo %}
-            <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
-            <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}</p><br>
-            <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong> {{ui.email}}</p><br>
-            <p><i class="fa fa-info-circle"></i><strong> About: </strong> {{ui.about}}</p><br>
+        <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
+        <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}</p><br>
+        <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong> {{ui.email}}</p><br>
+        <p><i class="fa fa-info-circle"></i><strong> About: </strong> {{ui.about}}</p><br>
+        <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
+    {% endfor %}
+    {% if not visitor %}
+        <a href="/editprofile/"><p><i class="fa fa-edit"></i><strong> Edit Profile</strong></p></a><br>
+        {% else %}
+        {% for ui in userinfo %}
+            {% if not follow and member%}
+                <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-user-plus"></i><strong> Follow</strong></p></a><br>
+            {% elif follow and member%}
+                <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-bell-slash-o"></i><strong> Unfollow</strong></p></a><br>
+            {% endif %}
         {% endfor %}
-        {% if not visitor %}
-            <a href="/editprofile/"><p><i class="fa fa-edit"></i><strong> Edit Profile</strong></p></a><br>
-        {% endif %}
+    {% endif %}
     </div>
 
     <div class="upload">
@@ -41,10 +50,11 @@
                 {% for catg in category %}
                     <option value="{{catg}}">{{catg}}</option>
                 {% endfor %}
-            </select><br><br>
+            </select><br>
+            <textarea name="caption" id="" cols="46" rows="3" placeholder=" Add a caption for the image"></textarea><br>
             <input type="checkbox" name="chbx" value="checked">
-            <label for="vehicle1"> Add a new category </label>
-            <input type="text" id="new-catagory" name="newcatg" placeholder=" add here..">
+            <label> Add a new category </label>
+            <input type="text" id="new-catagory" name="newcatg" placeholder="Category name">
             <button id="upload-icon">Upload <i class="fa fa-upload"></i></button><br>
         </form>
         {% endif %}
@@ -65,9 +75,18 @@
             <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}</p><br>
             <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong> {{ui.email}}</p><br>
             <p><i class="fa fa-info-circle"></i><strong> About: </strong> {{ui.about}}</p><br>
+            <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
         {% endfor %}
         {% if not visitor %}
             <a href="/editprofile/"><p><i class="fa fa-edit"></i><strong> Edit Profile</strong></p></a><br>
+            {% else %}
+            {% for ui in userinfo %}
+                {% if not follow and member%}
+                    <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-user-plus"></i><strong> Follow</strong></p></a><br>
+                {% elif follow and member%}
+                    <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-bell-slash-o"></i><strong> Unfollow</strong></p></a><br>
+                {% endif %}
+            {% endfor %}
         {% endif %}
         </div>
 
@@ -79,6 +98,7 @@
                     <a href="{{image.photo.url}}">
                         <img src="{{image.photo.url}}" alt=""><br>
                     </a>
+                    <h5 id="info">{{image.capt}}</h5>
                     <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
                     {% if not visitor %}
                     <a href="{% url 'delete' image.id 'dashboard'%}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
