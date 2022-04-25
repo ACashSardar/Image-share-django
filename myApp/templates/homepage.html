@@ -34,9 +34,9 @@
                 <h2>Categories</h2><br>
             </div>
             <div class="cat-tiles">
-                <button class="cat-items"><a href="{% url 'catgsearch' 'allimg' %}" class="">All images</a></button>
+                <a href="{% url 'catgsearch' 'allimg' %}" class=""><button class="cat-items">All images</button></a>
                 {% for catg in category %}
-                    <button class="cat-items"><a href="{% url 'catgsearch' catg %}" class="">{{catg}}</a></button>
+                <a href="{% url 'catgsearch' catg %}" class=""><button class="cat-items">{{catg}}</button></a>
                 {% endfor %}
             </div>
         </div>
