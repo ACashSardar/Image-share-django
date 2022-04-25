@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel='stylesheet' href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% include 'header.html' %}
     <title>Edit Profile</title>
 </head>
 <body>
     <div class="app-name">
-        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE <i class="fa fa-cloud-upload"></i></h2>
+        <h2><i class="fa fa-cloud-download"></i> IMAGE SHARE</i> <i class="fa fa-cloud-upload"></i></h2>
     </div>
 
     <div class="container">
@@ -78,21 +70,25 @@
 
         <div class="gallery-user-profile">
             {% for image in images %}
-                <div class="repeat"> 
-                    <p id="info">Catagory: {{image.catg}}</p>  
-                    <p id="info">Posted on {{image.date}}</p>
-                    <a href="{{image.photo.url}}">
-                        <img src="{{image.photo.url}}" alt=""><br>
-                    </a>
+            <div class="repeat"> 
+                <p id="info">Catagory: {{image.catg}}</p>  
+                <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}</p>
+                <a href="{{image.photo.url}}">
+                    <img src="{{image.photo.url}}" alt=""><br>
+                </a>
+                {% if image.capt %}
                     <h5 id="info">{{image.capt}}</h5>
-                    <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
-                    {% if not visitor %}
-                    <a href="{% url 'delete' image.id 'dashboard'%}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
-                    {% endif %}
-                    <br><br>
-                </div>
+                {% else %}
+                    <h5 id="info">( No Caption )</h5>
+                {% endif %}
+                <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
+                {% if not visitor %}
+                <a href="{% url 'delete' image.id 'dashboard'%}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
+                {% endif %}
+                <br><br>
+            </div>
             {% endfor %}
         </div>
     </div>
-</body>
-</html>
+
+{% include 'footer.html' %}

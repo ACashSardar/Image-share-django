@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel='stylesheet' href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% include 'header.html' %}
     <title>Dashboard</title>
 </head>
 <body>
     <div class="app-name">
-        <h2><i class="fa fa-camera-retro"></i> IMAGE SHARE <i class="fa fa-cloud-upload"></i></h2>
+        <h2><i class="fa fa-cloud-download"></i> IMAGE SHARE</i> <i class="fa fa-cloud-upload"></i></h2>
     </div>
 
     <div class="container">
@@ -26,6 +18,7 @@
         <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}</p><br>
         <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong> {{ui.email}}</p><br>
         <p><i class="fa fa-info-circle"></i><strong> About: </strong> {{ui.about}}</p><br>
+        <p><i class="fa fa-leaf"></i><strong> Contribution: </strong> {{images.count}} images</p><br>
         <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
     {% endfor %}
     {% if not visitor %}
@@ -75,13 +68,14 @@
             <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}</p><br>
             <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong> {{ui.email}}</p><br>
             <p><i class="fa fa-info-circle"></i><strong> About: </strong> {{ui.about}}</p><br>
+            <p><i class="fa fa-leaf"></i><strong> Contribution: </strong> {{images.count}} images</p><br>
             <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
         {% endfor %}
         {% if not visitor %}
             <a href="/editprofile/"><p><i class="fa fa-edit"></i><strong> Edit Profile</strong></p></a><br>
             {% else %}
             {% for ui in userinfo %}
-                {% if not follow and member%}
+                {% if not follow and member%} 
                     <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-user-plus"></i><strong> Follow</strong></p></a><br>
                 {% elif follow and member%}
                     <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-bell-slash-o"></i><strong> Unfollow</strong></p></a><br>
@@ -94,11 +88,15 @@
             {% for image in images %}
                 <div class="repeat"> 
                     <p id="info">Catagory: {{image.catg}}</p>  
-                    <p id="info">Posted on {{image.date}}</p>
+                    <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}</p>
                     <a href="{{image.photo.url}}">
                         <img src="{{image.photo.url}}" alt=""><br>
                     </a>
-                    <h5 id="info">{{image.capt}}</h5>
+                    {% if image.capt %}
+                        <h5 id="info">{{image.capt}}</h5>
+                    {% else %}
+                        <h5 id="info">( No Caption )</h5>
+                    {% endif %}
                     <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
                     {% if not visitor %}
                     <a href="{% url 'delete' image.id 'dashboard'%}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
@@ -109,5 +107,5 @@
         </div>
     </div>
     <br><br>
-</body>
-</html>
+
+{% include 'footer.html' %}
