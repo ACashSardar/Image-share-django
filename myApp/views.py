@@ -3,7 +3,7 @@ from .models import Image,Profile, Category
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as UserLogin, logout as UserLogout
 from nltk.stem.porter import PorterStemmer
-
+import random
 # Create your views here.
 ps=PorterStemmer()
 def stem(text):
@@ -21,6 +21,11 @@ def showFeeds(user):
             continue
         feeds= feeds | Image.objects.filter(user=curr_user.followings.all()[i])
     return feeds
+
+def Shuffle(querySet):
+    set_items = list(querySet)
+    random.shuffle(set_items)
+    return set_items
 
 def home(request): 
     if request.method=="POST":
@@ -46,6 +51,7 @@ def home(request):
         images=Image.objects.filter(user=request.user)
         userinfo=Profile.objects.filter(user=request.user)
         category=Category.objects.all()
+        category=Shuffle(category)
         feeds=showFeeds(request.user)
         context={'images':images,'userinfo':userinfo,'category':category,'visitor':False, 'feeds': feeds}
         return render(request,'dashboard.html',context)
@@ -53,10 +59,14 @@ def home(request):
         images=Image.objects.all()
         userinfo=Profile.objects.filter(user=request.user)
         category=Category.objects.all()
+        category=Shuffle(category)
+        images=Shuffle(images)
         context={'images':images,'userinfo':userinfo,'category':category,'visitor':False,'registered':True}
         return render(request,'homepage.html',context)
     else:
         category=Category.objects.all()
+        category=Shuffle(category)
+        images=Shuffle(images)
         context={'images':images,'category':category,'visitor':False,'registered':False}
         return render(request,'homepage.html',context)       
 
@@ -65,6 +75,8 @@ def dashboard(request):
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.filter(user=request.user)
     feeds=showFeeds(request.user)
+    images=Shuffle(images)
+    feeds=Shuffle(feeds)
     context={'images':images,'userinfo':userinfo,'category':category,'visitor':False, 'feeds': feeds}
     return render(request,'dashboard.html',context)
 
@@ -80,6 +92,8 @@ def editprofile(request):
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.get(user=request.user)
     feeds=showFeeds(request.user)
+    images=Shuffle(images)
+    feeds=Shuffle(feeds)
     context={'images':images,'userinfo':userinfo,'visitor':False, 'feeds': feeds}
     return render(request,'editprofile.html',context)
 
@@ -94,6 +108,8 @@ def delete(request,imageID,curr_page):
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.filter(user=request.user)
     feeds=showFeeds(request.user)
+    images=Shuffle(images)
+    feeds=Shuffle(feeds)
     context={'images':images,'userinfo':userinfo, 'category':category,'registered':True, 'feeds': feeds}
     if curr_page=='homepage':
         images=Image.objects.all()
@@ -194,7 +210,6 @@ def manualsearch(request):
 
 
 def selectimg(request,catg,id):
-    print(catg,id)
     images=Image.objects.none()
     category=Category.objects.get(title=catg)
     images=Image.objects.filter(catg=category)
@@ -210,6 +225,7 @@ def selectimg(request,catg,id):
         registered=True
     select=True
     category=Category.objects.all()
+    images=Shuffle(images)
     context={'images':images,'category':category,'visitor':visitor,'selectedimg':selectedimg,'select':select,'profile':profile,'registered':registered}
     select=False
     return render(request,'homepage.html',context)
@@ -222,7 +238,6 @@ def follow(request,profileID):
         if str(ap.user)==str(request.user):
             followedBy=ap
             break
-
     if profile.user in followedBy.followings.all():
         profile.followers.remove(followedBy.user)
         followedBy.followings.remove(profile.user)
@@ -237,6 +252,7 @@ def follow(request,profileID):
     images=Image.objects.filter(user=profile.user)
     category=Category.objects.all()
     userinfo=Profile.objects.filter(user=profile.user)
+    images=Shuffle(images)
     context={'images':images,'userinfo':userinfo,'category':category,'visitor':True, 'follow':follow,'member':True}
     return render(request,'dashboard.html',context)
     
