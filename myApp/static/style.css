@@ -5,7 +5,9 @@
 }
 body {
   background: white;
-  /* background: url(https://source.unsplash.com/1080x1920/?new&zealand); */
+  display:grid;
+  grid-template-rows: auto 1fr auto;
+  min-height:100vh;
 }
 .search-bar{
   padding: 10px;
@@ -209,6 +211,7 @@ body {
   text-align: right;
   padding: 10px;
   background: rgba(0, 0, 0,0.7);
+  max-height: 40px;
 }
 
 .container a{
@@ -508,6 +511,7 @@ textarea{
 .footer {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
+  position: relative;
   font-family: Calibri Light;
   text-align: center;
   font-size: calc(10px + 0.5vw);
