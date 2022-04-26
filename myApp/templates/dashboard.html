@@ -56,6 +56,9 @@
     <div class="my-posts">
         {% if not visitor %}
         <h2><i class="fa fa-image"></i> My Posts</h2>
+            {% if not images %}
+                <p> ( You haven't posted anything )</p>
+            {% endif %}
         {% else %}
         <h2><i class="fa fa-image"></i> {{userinfo.first}}'s Posts</h2>
         {% endif %}
@@ -101,6 +104,41 @@
                     {% if not visitor %}
                     <a href="{% url 'delete' image.id 'dashboard'%}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
                     {% endif %}
+                    <br><br>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br><br>
+    <div class="my-posts">
+        {% if not visitor %}
+            <h2><i class="fa fa-image"></i> My Feeds</h2>
+            {% if not feeds %}
+                <p> ( You don't follow anyone )</p>
+            {% endif %}
+        {% endif %}
+    </div><br>
+
+    <div class="grid-container">
+        <div >
+
+        </div>
+
+        <div class="gallery-user-profile">
+            {% for image in feeds %}
+                <div class="repeat"> 
+                    <p id="info">Posted by: {{image.user}}</p>  
+                    <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}</p>
+                    <a href="{{image.photo.url}}">
+                        <img src="{{image.photo.url}}" alt=""><br>
+                    </a>
+                    {% if image.capt %}
+                        <h5 id="info">{{image.capt}}</h5>
+                    {% else %}
+                        <h5 id="info">( No Caption )</h5>
+                    {% endif %}
+                    <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
                     <br><br>
                 </div>
             {% endfor %}

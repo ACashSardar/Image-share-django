@@ -13,6 +13,15 @@ def stem(text):
 
     return " ".join(y)
 
+def showFeeds(user):
+    curr_user=Profile.objects.get(user=user)
+    feeds=Image.objects.none()
+    for i in range(curr_user.followings.all().count()):
+        if i==0 and user.is_superuser:
+            continue
+        feeds= feeds | Image.objects.filter(user=curr_user.followings.all()[i])
+    return feeds
+
 def home(request): 
     if request.method=="POST":
         checkbox=None
@@ -37,8 +46,8 @@ def home(request):
         images=Image.objects.filter(user=request.user)
         userinfo=Profile.objects.filter(user=request.user)
         category=Category.objects.all()
-        print('Available categories',category)
-        context={'images':images,'userinfo':userinfo,'category':category,'visitor':False}
+        feeds=showFeeds(request.user)
+        context={'images':images,'userinfo':userinfo,'category':category,'visitor':False, 'feeds': feeds}
         return render(request,'dashboard.html',context)
     elif request.user.is_authenticated and request.method=="GET":
         images=Image.objects.all()
@@ -55,19 +64,11 @@ def dashboard(request):
     category=Category.objects.all()
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.filter(user=request.user)
-    context={'images':images,'userinfo':userinfo,'category':category,'visitor':False}
+    feeds=showFeeds(request.user)
+    context={'images':images,'userinfo':userinfo,'category':category,'visitor':False, 'feeds': feeds}
     return render(request,'dashboard.html',context)
 
 def editprofile(request):
-    profile=Profile.objects.all()
-    present=False
-    for pr in profile:
-        if(str(pr.user)==str(request.user)):
-            present=True
-            break
-    if(present is False):
-        profile=Profile.objects.create(user=request.user)
-
     if request.method=='POST':
         email=request.POST['email']
         about=request.POST['about']
@@ -78,8 +79,8 @@ def editprofile(request):
         redirect('dashboard')
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.get(user=request.user)
-    category=Category.objects.all()
-    context={'images':images,'userinfo':userinfo,'category':category}
+    feeds=showFeeds(request.user)
+    context={'images':images,'userinfo':userinfo,'visitor':False, 'feeds': feeds}
     return render(request,'editprofile.html',context)
 
 def delete(request,imageID,curr_page):
@@ -92,10 +93,11 @@ def delete(request,imageID,curr_page):
     category=Category.objects.all()
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.filter(user=request.user)
-    context={'images':images,'userinfo':userinfo, 'category':category,'registered':True}
+    feeds=showFeeds(request.user)
+    context={'images':images,'userinfo':userinfo, 'category':category,'registered':True, 'feeds': feeds}
     if curr_page=='homepage':
         images=Image.objects.all()
-        context={'images':images,'userinfo':userinfo, 'category':category,'registered':True}
+        context={'images':images,'userinfo':userinfo, 'category':category,'registered':True, 'feeds': feeds}
         return render(request,'homepage.html',context)
     return render(request,'dashboard.html',context)
 
@@ -106,6 +108,14 @@ def login(request):
         user=authenticate(username=username,password=password)
         print('User logged In')
         if user:
+            profile=Profile.objects.all()
+            present=False
+            for pr in profile:
+                if(str(pr.user)==username):
+                    present=True
+                    break
+            if(present is False):
+                profile=Profile.objects.create(user=user)
             UserLogin(request,user)
             return redirect('dashboard')
     return render(request,'login.html')
