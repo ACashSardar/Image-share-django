@@ -92,6 +92,7 @@ body {
   line-height: 1.5;
 }
 
+
 .gallery,.photo_comments,.gallery-user-profile {
   display: grid;
   position: relative;
@@ -158,17 +159,6 @@ body {
   margin-bottom: 20px;
 }
 
-.upload select{
-  width:100px;
-  height: 40px;
-  color:black;
-  background-color: white;
-  border-radius: 5px;
-  border: 1px solid white;
-  margin-right: 10px;
-}
-
-
 #upload-icon{
   color: white;
   background-color: rgba(0, 0, 0,0.7);
@@ -192,8 +182,7 @@ body {
 
 .repeat img:hover {
   transition-delay: 25ms, 25ms;
-  transform: scale(0.95); 
-  border: 0px;
+  opacity: 0.8;
 }
 
 #info{
@@ -223,9 +212,9 @@ body {
 }
 
 .about-section{
-  background: url(https://c4.wallpaperflare.com/wallpaper/195/429/242/black-elegant-wallpaper-thumb.jpg);
+  background: url(https://i.pinimg.com/564x/0a/5a/a9/0a5aa9d0a6d1f6d89a3f1dda409bba73.jpg);
   border-radius: 2px;
-  padding: 20px;
+  padding: 10px;
   font-family:Calibri Light;
   margin-left: 10px;
   color: white;
@@ -233,7 +222,15 @@ body {
   height: 94%;top:6%;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 10px;
 }
+.glass{
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
 .about-section p,.mobile-dash p{
   color: white;
 }
@@ -241,6 +238,11 @@ body {
   color: white;
   text-decoration: none;
 }
+
+.about-section i,.mobile-dash i{
+  color: rgb(210, 255, 105);
+}
+
 .about-section input[type='submit'],.mobile-dash input[type='submit']{
   background: white;
   padding: 4px 15px;
@@ -269,8 +271,8 @@ textarea{
 .upload textarea{
   margin-right: 10px;
   margin-top: 5px;
-  width:362px;background: lightblue;
-  border: 1px solid lightseagreen;
+  width:357px;
+  border: 1px solid gray;
 }
 
 .grid-container {
@@ -328,13 +330,16 @@ textarea{
   font-size: 15px;
 }
 #select-catagory, #new-catagory{
-  border: 1px solid gray;
   height: 28px;
-  width: 105px;
+  width: 100px;
   border-radius: 2px;
-  padding: 5px;
-  background: lightblue;
-  border: 1px solid lightseagreen;
+  padding: 2px;
+  margin-right: 5px;
+  border: 1px solid gray;
+}
+
+#select-catagory{
+  margin-right: 10px;
 }
 
 .save-btn{
@@ -445,8 +450,8 @@ textarea{
 }
 .mobile-dash{
   display:block;
-  background: url(https://c4.wallpaperflare.com/wallpaper/195/429/242/black-elegant-wallpaper-thumb.jpg);
-  border-radius: 2px;
+  background: url(https://i.pinimg.com/564x/0a/5a/a9/0a5aa9d0a6d1f6d89a3f1dda409bba73.jpg);
+  border-radius: 10px;
   padding: 30px;
   color: white;
   font-family: Calibri Light;
@@ -516,7 +521,7 @@ textarea{
   font-size: calc(11px + 0.4vw);
   padding: 25px 0px;
 }
-
+/* 
 ::placeholder{
   color: black;
-}
+} */

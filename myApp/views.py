@@ -156,6 +156,7 @@ def logout(request):
 
 def onclick(request,username):
     allprof=Profile.objects.all()
+    feeds=[]
     member=False
     follow=False
     visitor=True
@@ -176,9 +177,12 @@ def onclick(request,username):
         member=True
     if str(targetuser.user)==str(request.user):
         visitor=False
+        feeds=showFeeds(targetuser.user)
     if member and targetuser.user in followedBy.followings.all():
         follow=True
-    context={'images':images,'userinfo':userinfo,'category':category,'visitor':visitor,'follow':follow, 'member':member}
+    images=Shuffle(images)
+    feeds=Shuffle(feeds)
+    context={'images':images,'userinfo':userinfo,'category':category,'visitor':visitor,'follow':follow, 'member':member,'feeds': feeds}
     return render(request,'dashboard.html',context)
 
 def catgsearch(request,catg):

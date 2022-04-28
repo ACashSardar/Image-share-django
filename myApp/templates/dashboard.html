@@ -18,7 +18,7 @@
         <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}</p><br>
         <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong> {{ui.email}}</p><br>
         <p><i class="fa fa-info-circle"></i><strong> About: </strong> {{ui.about}}</p><br>
-        <p><i class="fa fa-leaf"></i><strong> Contribution: </strong> {{images.count}} images</p><br>
+        <p><i class="fa fa-leaf"></i><strong> Contribution: </strong> {{images|length}} images</p><br>
         <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
     {% endfor %}
     {% if not visitor %}
@@ -71,7 +71,7 @@
             <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}</p><br>
             <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong> {{ui.email}}</p><br>
             <p><i class="fa fa-info-circle"></i><strong> About: </strong> {{ui.about}}</p><br>
-            <p><i class="fa fa-leaf"></i><strong> Contribution: </strong> {{images.count}} images</p><br>
+            <p><i class="fa fa-leaf"></i><strong> Contribution: </strong> {{images|length}} images</p><br>
             <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
         {% endfor %}
         {% if not visitor %}
