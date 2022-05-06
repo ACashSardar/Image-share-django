@@ -89,12 +89,13 @@ def editprofile(request):
         userinfo.about=about
         userinfo.save()
         redirect('dashboard')
+    category=Category.objects.all()
     images=Image.objects.filter(user=request.user)
     userinfo=Profile.objects.get(user=request.user)
     feeds=showFeeds(request.user)
     images=Shuffle(images)
     feeds=Shuffle(feeds)
-    context={'images':images,'userinfo':userinfo,'visitor':False, 'feeds': feeds}
+    context={'images':images,'userinfo':userinfo,'category':category,'visitor':False, 'feeds': feeds}
     return render(request,'editprofile.html',context)
 
 def delete(request,imageID,curr_page):

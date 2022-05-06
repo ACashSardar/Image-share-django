@@ -4,8 +4,23 @@
 </div>
 
 <script>
+    var inputImg=document.querySelector("#inputImg")
+    var img=document.querySelector("#displayImg")
     var fullImgBox=document.getElementById(id="full-img-box")
     var fullImg=document.getElementById(id="fullImg") 
+
+    inputImg.addEventListener("change",function(){
+        const file=this.files[0]
+        if(file){
+            const reader=new FileReader();
+            reader.onload=function(){
+                const result=reader.result;
+                img.src=result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    
     function openFullImg(pic){
         fullImgBox.style.display="flex";
         fullImg.src=pic;
@@ -13,6 +28,7 @@
     function closeImg(){
         fullImgBox.style.display="none";
     }
+
 </script>
 
 <div class="footer">

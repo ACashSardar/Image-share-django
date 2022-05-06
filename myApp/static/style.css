@@ -157,7 +157,6 @@ body {
   position: relative;
   padding:10px;
   text-align: center;
-  
   background:inherit;
   margin-bottom: 20px;
 }
@@ -175,6 +174,23 @@ body {
   background-color: inherit;
   border: 2px solid rgba(0, 0, 0,0.7);
   transition: all 0.3s ease;
+}
+
+#displayImg{
+  width: 358px;
+  height: 200px;
+  margin:5px 10px 5px 0px;
+  border-radius: 5px;
+  background-size: cover;
+  border: 1px solid gray;
+}
+#custom-upload{
+  font-size: 15px;
+  background: rgb(230, 230, 230);
+  border: 1px solid gray;
+  margin-right: 10px;
+  padding:5px 80px;
+  border-radius: 4px;
 }
 
 .repeat{
@@ -277,8 +293,8 @@ textarea{
 }
 .upload textarea{
   margin-right: 10px;
-  margin-top: 5px;
-  width:357px;
+  margin-top: 10px;
+  width:360px;
   border: 1px solid gray;
 }
 
