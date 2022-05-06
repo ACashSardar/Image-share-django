@@ -1,3 +1,20 @@
+<div class="full-img" id="full-img-box">
+    <span onclick="closeImg()">X</span>
+    <img src="" alt="" id="fullImg">
+</div>
+
+<script>
+    var fullImgBox=document.getElementById(id="full-img-box")
+    var fullImg=document.getElementById(id="fullImg") 
+    function openFullImg(pic){
+        fullImgBox.style.display="flex";
+        fullImg.src=pic;
+    }
+    function closeImg(){
+        fullImgBox.style.display="none";
+    }
+</script>
+
 <div class="footer">
     <a href="https://www.linkedin.com/in/akash-sardar-118858184/" style="margin: 8px; text-decoration: none; color:rgb(0, 227, 235)" class="fa fa-linkedin"></a>
     <a href="https://github.com/ACashSardar" style="margin: 8px; text-decoration: none; color:rgb(255, 255, 255)" class="fa fa-github"></a>

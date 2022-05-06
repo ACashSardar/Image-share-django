@@ -3,7 +3,7 @@
 </head>
 <body>
     <div class="app-name">
-        <h2><i class="fa fa-cloud-download"></i> IMAGE SHARE</i> <i class="fa fa-cloud-upload"></i></h2>
+        <p><i class="fa fa-cloud-download"></i> Image Share <i class="fa fa-cloud-upload"></i></p>
     </div>
 
     <div class="container">
@@ -47,7 +47,7 @@
             <textarea name="caption" id="" cols="46" rows="3" placeholder=" Add a caption for the image"></textarea><br>
             <input type="checkbox" name="chbx" value="checked">
             <label> Add a new category </label>
-            <input type="text" id="new-catagory" name="newcatg" placeholder="Category name">
+            <input type="text" id="new-catagory" name="newcatg" placeholder="Category name"><br><br>
             <button id="upload-icon">Upload <i class="fa fa-upload"></i></button><br>
         </form>
         {% endif %}
@@ -92,9 +92,7 @@
                 <div class="repeat"> 
                     <p id="info">Catagory: {{image.catg}}</p>  
                     <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}</p>
-                    <a href="{{image.photo.url}}">
-                        <img src="{{image.photo.url}}" alt=""><br>
-                    </a>
+                    <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src)"><br>
                     {% if image.capt %}
                         <h5 id="info">{{image.capt}}</h5>
                     {% else %}
@@ -130,9 +128,7 @@
                 <div class="repeat"> 
                     <p id="info">Posted by: {{image.user}}</p>  
                     <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}</p>
-                    <a href="{{image.photo.url}}">
-                        <img src="{{image.photo.url}}" alt=""><br>
-                    </a>
+                    <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src)"><br>
                     {% if image.capt %}
                         <h5 id="info">{{image.capt}}</h5>
                     {% else %}
@@ -147,3 +143,4 @@
     <br><br>
 
 {% include 'footer.html' %}
+

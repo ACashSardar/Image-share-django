@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@200;300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +10,10 @@ body {
   display:grid;
   grid-template-rows: auto 1fr auto;
   min-height:100vh;
+  font-family: 'Comfortaa';
 }
 .search-bar{
   padding: 10px;
-  font-family: Calibri light;
-  color: black;
 }
 
 .search-bar input[type='text']{
@@ -19,77 +21,78 @@ body {
   width:60%;
   left: 20%;
   padding: 10px;
-  border-radius: 2px;
-  border:2px solid lightseagreen;
+  border-radius: 50px;
+  
+  border:2px solid black;
 }
 .search-bar input[type='submit']{
   position:relative;
   width:80px;
-  left: 19%;
+  left: 20%;
   padding: 10px;
-  border-radius: 2px;
-  background: lightseagreen;
-  color: white;
-  border:2px solid lightseagreen;
+  border-radius: 50px;
+  color: rgba(0, 0, 0,0.7); 
+  
+  background: white;
+  border:2px solid rgba(0, 0, 0,0.7);
 }
 
 .search-bar input[type='submit']:hover{
   color: white;
-  background: lightblue;
-  border:2px solid lightseagreen;
+  background: black;
   font-weight: bold;
-  transition-delay: 50ms, 50ms;
+  border: 2px solid black;
+  transition: all 0.3s ease;
 }
 
 .user-forms{
   position: relative;
   left:35%;width:30%;
-  background:lavender;
   padding: 30px;
   margin-top: 40px;
   border-radius: 4px;
-  font-family: calibri light;
+  
 }
 .user-forms label,h1,p,a{
   color: black;
-  font-family: Calibri Light;;
+  
 }
 .user-forms label{
   font-size: 20px;
 }
 .user-forms input[type='text'],input[type='password'],.about-section input[type='text'],.mobile-dash input[type='text']{
-  background: white;
+  background: lavender;
   width: 95%;
   padding: 8px 2px;
   margin: 2px;
   border-radius: 2px;
   border: 1px solid white;
   color:black;
-  font-family: calibri light;
+  
 }
 .user-forms input[type='submit']{
   width: 96%;
-  background: lightseagreen;
+  background: black;
   padding: 10px 10px;
   border-radius: 2px;
-  border: 1px solid lightseagreen;
+  border: 1px solid black;
   color:white;
 }
 .user-forms input[type='submit']:hover{
   background: white;
-  color:lightseagreen;
-  transition-delay: 50ms, 50ms;
+  color:black;
+  transition: all 0.3s ease;
   border: 1px solid white;
 }
 
 .app-name{
   padding: 10px;
-  color: white;
-  background: lightseagreen;
-  font-family: Calibri Light;
+  color: rgba(0, 0, 0,0.7);
+  background: rgb(230, 230, 230);
   text-align: center;
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: 25px;
+  font-family: 'Comfortaa';
+  line-height: 2;
 }
 
 
@@ -123,14 +126,15 @@ body {
   color: white;
   margin-bottom: 0px;
   margin-right: 2px;
-  background-color: darkcyan;
+  background-color: navy;
   border-radius: 2px;
   border: 0;
+  
   font-size:11px;
 }
 #dwn:hover{
-  background-color: lightseagreen;
-  transition-delay: 50ms, 50ms;
+  background-color: blue;
+  transition: all 0.3s ease;
   }
   
 #del{
@@ -142,11 +146,12 @@ body {
   border-radius: 2px;
   margin-right: 2px;
   border: 0;
+  
   font-size:11px;
 }
 #del:hover{
   background-color: red;
-  transition-delay: 50ms, 50ms;
+  transition: all 0.3s ease;
   }
 
 .upload{
@@ -154,7 +159,7 @@ body {
   position: relative;
   padding:10px;
   text-align: center;
-  font-family: Calibri Light;
+  
   background:inherit;
   margin-bottom: 20px;
 }
@@ -171,31 +176,36 @@ body {
   color: rgba(0, 0, 0,0.7);
   background-color: inherit;
   border: 2px solid rgba(0, 0, 0,0.7);
-  transition-delay: 50ms, 50ms;
+  transition: all 0.3s ease;
 }
 
 .repeat{
   background: inherit;
   height: 100%;
-  font-family: Calibri Light;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.repeat img{
+  border-radius: 10px;
+  border: 2px solid white;
 }
 
 .repeat img:hover {
-  transition-delay: 25ms, 25ms;
-  opacity: 0.8;
+  transform: scale(0.8) rotate(-10deg);
+  transition: all 0.5s ease;
+  box-shadow:10px 20px 55px rgb(100, 100, 100);
 }
 
 #info{
   color: black;
   text-align: left;
-  position: relative;
-  left: 0%;
   font-size: 12px;
-  margin-left: 2px;
+  margin-left: 10px;
+  font-family: Calibri Light;
 }
 
  .container{
-  font-family: Calibri Light;
   text-align: right;
   padding: 10px;
   background: rgba(0, 0, 0,0.7);
@@ -209,13 +219,14 @@ body {
 }
 .container a:hover{
   font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 .about-section{
-  background: url(https://i.pinimg.com/564x/0a/5a/a9/0a5aa9d0a6d1f6d89a3f1dda409bba73.jpg);
+  background: linear-gradient(to right top,purple, blueviolet);
   border-radius: 2px;
   padding: 10px;
-  font-family:Calibri Light;
+  font-family:'Comfortaa';
   margin-left: 10px;
   color: white;
   position: relative;
@@ -250,21 +261,19 @@ body {
   border: 1px solid white;
 }
 .about-section input[type='submit']:hover{
-  background: lightseagreen;
-  color: black;
-  border: 1px solid lightseagreen;
-  transition-delay: 50ms, 50ms;
+  background: lightblue;
+  border: 1px solid lightblue;
+  transition: all 0.3s ease;
 }
 .mobile-dash input[type='submit']:hover{
-  background: lightseagreen;
-  color: black;
-  border: 1px solid lightseagreen;
-  transition-delay: 50ms, 50ms;
+  background: lightblue;
+  border: 1px solid lightblue;
+  transition: all 0.3s ease;
 }
 
 textarea{
   border-radius: 2px;
-  font-family: Calibri Light;
+  font-family: inherit;
   width: 95%;
   padding: 5px;
 }
@@ -293,7 +302,8 @@ textarea{
 .my-posts{
   text-align: center;
   color: rgb(40, 40, 40);
-  font-family: Calibri Light;
+  
+  font-weight: lighter;
 }
 .mobile-dash{
   display: none;
@@ -310,28 +320,29 @@ textarea{
 }
 .cat-items{
   width:100%;
-  padding: 12px 4px;
-  color: white;
-  background: rgba(0, 0, 0,0.7);
+  padding: 10px 4px;
+  color: black;
+  background-color: white;
   text-align: center;
-  border-radius: 2px;
+  border: 2px solid black;
+  border-radius: 50px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  
+  font-size: 18px;
 }
 
 .cat-items:hover{
   background: black;
   font-weight: bold;
   color: white;
-  transition-delay: 50ms, 50ms;
+  border: 2px solid black;;
+  transition: all 0.3s ease;
 }
-.cat-items a{
-  color: white;
-  text-decoration: none;
-  font-family: Calibri Light;
-  font-size: 15px;
-}
+
 #select-catagory, #new-catagory{
   height: 28px;
-  width: 100px;
+  width: 170px;
   border-radius: 2px;
   padding: 2px;
   margin-right: 5px;
@@ -340,6 +351,7 @@ textarea{
 
 #select-catagory{
   margin-right: 10px;
+  width: 100px;
 }
 
 .save-btn{
@@ -354,15 +366,15 @@ textarea{
   text-decoration: none;
 }
 .about-section button:hover{
-  background: lightseagreen;
-  border: 1px solid lightseagreen;
-  transition-delay: 50ms, 50ms;
+  background: lightblue;
+  border: 1px solid lightblue;
+  transition: all 0.3s ease;
   
 }
 .mobile-dash button:hover{
-  background: lightseagreen;
-  border: 1px solid lightseagreen;
-  transition-delay: 50ms, 50ms;
+  background: lightblue;
+  border: 1px solid lightblue;
+  transition: all 0.3s ease;
   
 }
 
@@ -383,13 +395,14 @@ textarea{
 
 .frame img{
   width: 100%;
+  border-radius: 10px;
 }
 
 .comment-section{
   color: black;
-  font-family: Calibri Light;
   font-size: calc(10px + 0.5vw);
   padding-top:5px;
+  font-family: Calibri Light;
 }
 .comment-section h2{
   color: black;
@@ -404,7 +417,7 @@ textarea{
 }
 
 .section1{
-  background: hotpink;
+  background: black;
   border-radius: 48%;
   padding: 5px;
 }
@@ -416,7 +429,51 @@ textarea{
 .comment-section a{
   text-decoration: none;
 }
- @media only screen and (max-width: 600px){
+
+.full-img{
+  position: fixed;
+  background: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#fullImg{
+  width: 90%;
+  max-width: 800px;
+}
+
+.full-img span{
+  position: absolute;
+  top:5%;right:5%;
+  font-size: 25px;
+  color: white;
+  cursor:pointer;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
+  text-align: center;
+  font-size: calc(11px + 0.4vw);
+  padding: 25px 0px;
+}
+
+@media only screen and (max-width: 1400px){
+  .gallery,.grid-container,.gallery-user-profile{
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(3, 33.3%);
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+  }
+}
+
+@media only screen and (max-width: 750px){
 .user-forms{
   width: 90%;
   left: 5%;
@@ -432,12 +489,9 @@ textarea{
   left:50%;
   font-size: 15px;
 }
-.upload{
-  left: 2.5%;
-  width: 95%;
-}
+
 .repeat{
-  margin-bottom: 5px;
+  margin-bottom: 40px;
 }
 .gallery,.grid-container,.gallery-user-profile{
   display: grid;
@@ -450,11 +504,11 @@ textarea{
 }
 .mobile-dash{
   display:block;
-  background: url(https://i.pinimg.com/564x/0a/5a/a9/0a5aa9d0a6d1f6d89a3f1dda409bba73.jpg);
+  background: linear-gradient(to right top,purple, blueviolet);
   border-radius: 10px;
   padding: 30px;
   color: white;
-  font-family: Calibri Light;
+  
   margin: 10px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -474,21 +528,24 @@ textarea{
 .search-bar input[type='submit']{
   position:relative;
   width:80px;
-  left: 8%;
+  left: 10%;
 }
 .cat-tiles{
   display: grid;
   position: relative;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(4, 24%);
   grid-row-gap: 0px;
 }
-.cat-items a{
+
+.cat-tiles a{
+  margin-left: 2px;
+}
+.cat-items {
   text-decoration: none;
-  font-family: Calibri Light;
   font-size: 14px;
 }
 .section1{
-  background: hotpink;
+  background: black;
   height: 45px;
   width: 45px;
   padding: 8px;
@@ -511,17 +568,8 @@ textarea{
   margin-left: 0px;
   grid-template-columns: 0.6fr 1.2fr;
 }
-}
 
 .footer {
-  background-color: rgba(0, 0, 0, 0.8);
-  position: relative;
-  font-family: Calibri Light;
-  text-align: center;
-  font-size: calc(11px + 0.4vw);
-  padding: 25px 0px;
+  font-size:11px;
 }
-/* 
-::placeholder{
-  color: black;
-} */
+}
