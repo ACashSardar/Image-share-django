@@ -51,7 +51,7 @@ body {
   padding: 30px;
   margin-top: 40px;
   border-radius: 4px;
-  
+  background: rgb(230, 230, 230);
 }
 .user-forms label,h1,p,a{
   color: black;
@@ -61,7 +61,7 @@ body {
   font-size: 20px;
 }
 .user-forms input[type='text'],input[type='password'],.about-section input[type='text'],.mobile-dash input[type='text']{
-  background: lavender;
+  background: white;
   width: 95%;
   padding: 8px 2px;
   margin: 2px;
@@ -72,22 +72,20 @@ body {
 }
 .user-forms input[type='submit']{
   width: 96%;
-  background: black;
+  background: lightseagreen;
   padding: 10px 10px;
   border-radius: 2px;
-  border: 1px solid black;
-  color:white;
+  border: 1px solid lightseagreen;
 }
 .user-forms input[type='submit']:hover{
   background: white;
-  color:black;
+  color:lightseagreen;
   transition: all 0.3s ease;
-  border: 1px solid white;
+  border: 1px solid lightseagreen;
 }
 
 .app-name{
   padding: 10px;
-  color: rgba(0, 0, 0,0.7);
   background: rgb(230, 230, 230);
   text-align: center;
   font-size: 25px;
@@ -208,7 +206,7 @@ body {
  .container{
   text-align: right;
   padding: 10px;
-  background: rgba(0, 0, 0,0.7);
+  background:lightseagreen;
   max-height: 40px;
 }
 
@@ -223,7 +221,7 @@ body {
 }
 
 .about-section{
-  background: linear-gradient(to right top,purple, blueviolet);
+  background: linear-gradient(to bottom, greenyellow 15%,black 15%);
   border-radius: 2px;
   padding: 10px;
   font-family:'Comfortaa';
@@ -261,13 +259,13 @@ body {
   border: 1px solid white;
 }
 .about-section input[type='submit']:hover{
-  background: lightblue;
-  border: 1px solid lightblue;
+  background: greenyellow;
+  border: 1px solid greenyellow;
   transition: all 0.3s ease;
 }
 .mobile-dash input[type='submit']:hover{
-  background: lightblue;
-  border: 1px solid lightblue;
+  background: greenyellow;
+  border: 1px solid greenyellow;
   transition: all 0.3s ease;
 }
 
@@ -366,14 +364,14 @@ textarea{
   text-decoration: none;
 }
 .about-section button:hover{
-  background: lightblue;
-  border: 1px solid lightblue;
+  background: greenyellow;
+  border: 1px solid greenyellow;
   transition: all 0.3s ease;
   
 }
 .mobile-dash button:hover{
-  background: lightblue;
-  border: 1px solid lightblue;
+  background: greenyellow;
+  border: 1px solid greenyellow;
   transition: all 0.3s ease;
   
 }
@@ -391,11 +389,17 @@ textarea{
 
 .frame{
   position: relative;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .frame img{
   width: 100%;
   border-radius: 10px;
+}
+.frame img:hover{
+  transform: scale(1.08);
+  transition: all 0.5s ease-in;
 }
 
 .comment-section{
@@ -471,6 +475,9 @@ textarea{
     display: grid;
     grid-template-columns: 0.5fr 1.5fr;
   }
+  .about-section{
+    background: linear-gradient(to bottom, greenyellow 12%,black 12%);
+  }
 }
 
 @media only screen and (max-width: 750px){
@@ -504,7 +511,7 @@ textarea{
 }
 .mobile-dash{
   display:block;
-  background: linear-gradient(to right top,purple, blueviolet);
+  background: linear-gradient(to bottom, greenyellow 20%,black 20%);
   border-radius: 10px;
   padding: 30px;
   color: white;
