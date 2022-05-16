@@ -3,9 +3,9 @@
 </head>
 <body>
     <div class="app-name">
-        <p><i class="fa fa-cloud-download"></i> Image Share <i class="fa fa-cloud-upload"></i></p>
+        <p><i class="fa fa-camera"></i> Image Share <i class="fa fa-share-alt"></i></p>
     </div>
-
+  
     <div class="container">
         <a href="#"><i class="fa fa-user-circle"></i> {{user}}</a>
         <a href="/home/"><i class="fa fa-home"></i> HOME</a>
@@ -27,30 +27,7 @@
         <br><br>
     </div>
 
-    <div class="upload">
-        {% if not visitor %}
-        <form action="/" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <center>
-                <img src="https://us.123rf.com/450wm/koblizeek/koblizeek1902/koblizeek190200055/125337077-no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-.jpg?ver=6" alt="" id="displayImg">
-            </center>
-            <label for="inputImg" id="custom-upload"><i class="fa fa-plus"></i> Choose a file to upload</label>
-            <input type="file" name="photo" accept="image/*" id="inputImg" hidden><br>
-            <textarea name="caption" id="" cols="46" rows="3" placeholder=" Add a caption for the image"></textarea><br>
-            <input type="checkbox" name="chbx" value="checked">
-            <label> Add a new category </label>
-            <input type="text" id="new-catagory" name="newcatg" placeholder="Category name"><br><br>
-            <label> Select a category </label>
-            <select name="category" id="select-catagory">
-                {% for catg in category %}
-                    <option value="{{catg}}">{{catg}}</option>
-                {% endfor %}
-            </select>
-            <button id="upload-icon">Upload <i class="fa fa-upload"></i></button><br>
-        </form>
-        {% endif %}
-    </div>
-    
+    <br><br>
     <div class="my-posts">
         {% if not visitor %}
         <h2><i class="fa fa-image"></i> My Posts</h2>
@@ -78,16 +55,21 @@
             {% for image in images %}
             <div class="repeat"> 
                 <p id="info">Catagory: {{image.catg}}</p>  
-                <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}</p>
+                <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
+                    <span>
+                        <a href="{{image.photo.url}}" download="{{image.photo.url}}" > <i class="fa fa-download"></i></a>
+                    </span>
+                    <span>
+                        {% if not visitor %}
+                            <a href="{% url 'delete' image.id 'dashboard'%}"> <i class="fa fa-trash"></i></a>  
+                        {% endif %}
+                    </span>
+                </p>
                 <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src)"><br>
                 {% if image.capt %}
                     <h5 id="info">{{image.capt}}</h5>
                 {% else %}
                     <h5 id="info">( No Caption )</h5>
-                {% endif %}
-                <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
-                {% if not visitor %}
-                <a href="{% url 'delete' image.id 'dashboard'%}"><button id="del">Delete <i class="fa fa-trash"></i></button></a>  
                 {% endif %}
                 <br><br>
             </div>
@@ -107,21 +89,45 @@
 
     <div class="grid-container">
         <div >
-
+            <div class="upload">
+                {% if not visitor %}
+                <form action="/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <center>
+                        <img src="https://us.123rf.com/450wm/koblizeek/koblizeek1902/koblizeek190200055/125337077-no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-.jpg?ver=6" alt="" id="displayImg">
+                    </center>
+                    <label for="inputImg" id="custom-upload"><i class="fa fa-plus"></i> Choose a file to upload</label>
+                    <input type="file" name="photo" accept="image/*" id="inputImg" hidden><br>
+                    <textarea name="caption" id="" cols="46" rows="3" placeholder=" Add a caption for the image"></textarea><br>
+                    <label> Select a category </label>
+                    <select name="category" id="select-catagory">
+                        {% for catg in category %}
+                            <option value="{{catg}}">{{catg}}</option>
+                        {% endfor %}
+                    </select><br><br>
+                    <input type="checkbox" name="chbx" value="checked">
+                    <input type="text" id="new-catagory" name="newcatg" placeholder="Add a new category">
+                    <button id="upload-icon">Upload <i class="fa fa-upload"></i></button><br>
+                </form>
+                {% endif %}
+            </div>
         </div>
 
         <div class="gallery-user-profile">
             {% for image in feeds %}
                 <div class="repeat"> 
                     <p id="info">Posted by: {{image.user}}</p>  
-                    <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}</p>
+                    <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
+                        <span>
+                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" > <i class="fa fa-download"></i></a>
+                        </span>
+                    </p>
                     <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src)"><br>
                     {% if image.capt %}
                         <h5 id="info">{{image.capt}}</h5>
                     {% else %}
                         <h5 id="info">( No Caption )</h5>
                     {% endif %}
-                    <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
                     <br><br>
                 </div>
             {% endfor %}

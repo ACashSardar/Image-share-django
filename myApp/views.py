@@ -10,7 +10,6 @@ def stem(text):
     y=[]
     for i in text.split():
         y.append(ps.stem(i))
-
     return " ".join(y)
 
 def showFeeds(user):
@@ -207,9 +206,11 @@ def manualsearch(request):
     images=Image.objects.none()
     for ac in allcatg:
         for word in userSearch:
-            if word in stem(str(ac.title)):
+            if word is '':
+                images=Image.objects.all()
+            if word is not '' and word in stem(str(ac.title)):
                 images=Image.objects.filter(catg=ac)
-    category=Category.objects.all()
+    category=allcatg
     context={'images':images,'category':category,'visitor':False,'registered':request.user.is_authenticated}
     return render(request,'homepage.html',context)
 

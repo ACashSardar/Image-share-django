@@ -51,11 +51,10 @@ body {
   padding: 30px;
   margin-top: 40px;
   border-radius: 4px;
-  background: rgb(230, 230, 230);
+  background: lavender;
 }
 .user-forms label,h1,p,a{
   color: black;
-  
 }
 .user-forms label{
   font-size: 20px;
@@ -67,21 +66,21 @@ body {
   margin: 2px;
   border-radius: 2px;
   border: 1px solid white;
-  color:black;
-  
+  color:black;  
 }
 .user-forms input[type='submit']{
   width: 96%;
-  background: lightseagreen;
+  background: black;
   padding: 10px 10px;
   border-radius: 2px;
-  border: 1px solid lightseagreen;
+  border: 1px solid black;
+  color: white;
 }
 .user-forms input[type='submit']:hover{
   background: white;
-  color:lightseagreen;
+  color:black;
   transition: all 0.3s ease;
-  border: 1px solid lightseagreen;
+  border: 1px solid black;
 }
 
 .app-name{
@@ -117,41 +116,6 @@ body {
   border: 1px solid white;
 }
 
-
-#dwn{
-  padding:5px;
-  position: relative;
-  color: white;
-  margin-bottom: 0px;
-  margin-right: 2px;
-  background-color: navy;
-  border-radius: 2px;
-  border: 0;
-  
-  font-size:11px;
-}
-#dwn:hover{
-  background-color: blue;
-  transition: all 0.3s ease;
-  }
-  
-#del{
-  padding:5px;
-  position: relative;
-  color: white;
-  margin-bottom: 0px;
-  background-color: crimson;
-  border-radius: 2px;
-  margin-right: 2px;
-  border: 0;
-  
-  font-size:11px;
-}
-#del:hover{
-  background-color: red;
-  transition: all 0.3s ease;
-  }
-
 .upload{
   width: 100%;
   position: relative;
@@ -177,8 +141,8 @@ body {
 }
 
 #displayImg{
-  width: 358px;
-  height: 200px;
+  width: 298px;
+  height: 180px;
   margin:5px 10px 5px 0px;
   border-radius: 5px;
   background-size: cover;
@@ -186,11 +150,19 @@ body {
 }
 #custom-upload{
   font-size: 15px;
+  width: 300px;
+  background: rgba(0, 0, 0,0.7);
+  border: 1px solid rgba(0, 0, 0,0.7);
+  color: white;
+  margin-right: 10px;
+  padding: 5px 50px;
+  border-radius: 3px;
+}
+#custom-upload:hover{
   background: rgb(230, 230, 230);
   border: 1px solid gray;
-  margin-right: 10px;
-  padding:5px 80px;
-  border-radius: 4px;
+  color: black;
+  transition: all 0.3s ease;
 }
 
 .repeat{
@@ -211,6 +183,25 @@ body {
   box-shadow:10px 20px 55px rgb(100, 100, 100);
 }
 
+.repeat span{
+  margin-left: 20px;
+  font-size: 16px;
+}
+.repeat span i{
+  color: rgba(0, 0, 0, 0.6);
+}
+.repeat span i:hover{
+  color: rgb(0, 0, 0);
+  transition: all 0.2s ease;
+  transform: scale(1.05);
+}
+
+.comment-section span{
+  font-size: 20px;
+  margin: 5px;
+}
+
+
 #info{
   color: black;
   text-align: left;
@@ -222,7 +213,7 @@ body {
  .container{
   text-align: right;
   padding: 10px;
-  background:lightseagreen;
+  background:rgba(0, 0, 0, 0.8);
   max-height: 40px;
 }
 
@@ -294,7 +285,7 @@ textarea{
 .upload textarea{
   margin-right: 10px;
   margin-top: 10px;
-  width:360px;
+  width:300px;
   border: 1px solid gray;
 }
 
@@ -356,16 +347,15 @@ textarea{
 
 #select-catagory, #new-catagory{
   height: 28px;
-  width: 170px;
+  width: 172px;
   border-radius: 2px;
-  padding: 2px;
+  padding: 2px 4px;
   margin-right: 5px;
   border: 1px solid gray;
 }
 
 #select-catagory{
-  margin-right: 10px;
-  width: 100px;
+  width: 145px;
 }
 
 .save-btn{
@@ -590,6 +580,10 @@ textarea{
   margin-top: 0px;
   margin-left: 0px;
   grid-template-columns: 0.6fr 1.2fr;
+}
+
+.comment-section span{
+  font-size: 12px;
 }
 
 .footer {

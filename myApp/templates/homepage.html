@@ -4,7 +4,7 @@
 </head>
 <body>
     <div class="app-name">
-        <p><i class="fa fa-cloud-download"></i> Image Share <i class="fa fa-cloud-upload"></i></p>
+        <p><i class="fa fa-camera"></i> Image Share <i class="fa fa-share-alt"></i></p>
     </div>
 
     <div class="container">
@@ -76,9 +76,13 @@
                             <label>Image Category: {{selectedimg.catg}}</label>
                         </p>
                         <br>
-                        <a href="{{selectedimg.photo.url}}" download="{{selectedimg.photo.url}}" ><button id="dwn">Download <i class="fa fa-download"></i></button></a>
+                        <span>
+                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" >Download <i class="fa fa-download"></i></a>
+                        </span>
                         {% if not visitor %}
-                        <a href="{% url 'delete' selectedimg.id 'homepage'%}"><button id="del">Delete <i class="fa fa-trash"></i></button></a> 
+                        <span>
+                            <a href="{% url 'delete' selectedimg.id 'homepage'%}">Delete  <i class="fa fa-trash"></i></a> 
+                        </span>
                         {% endif %} 
                     </div>
                 </div>
