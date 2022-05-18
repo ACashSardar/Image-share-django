@@ -53,24 +53,21 @@
 
         <div class="gallery-user-profile">
             {% for image in images %}
-            <div class="repeat"> 
+            <div class="repeat">
                 <details>
                     <summary>Image info</summary>
-                    <p>
+                    <p> Posted by: {{image.user}}<br>
                         Catagory: {{image.catg}}<br>
-                        <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
-                        <span>
-                            {% if not visitor %}
-                                <a href="{% url 'delete' image.id 'dashboard'%}"><i class="fa fa-trash"></i></a>  
-                            {% endif %}
-                        </span>
+                        <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}} <br><br>
+                        <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button class="dwn-btn"><i class="fa fa-download"></i> Download</button></a>
+                        {% if not visitor %}
+                            <a href="{% url 'delete' image.id 'dashboard'%}"><button class="del-btn"><i class="fa fa-trash"></i> Delete</button></a>  
+                        {% endif %}
                     </p>
                 </details>
-                
                 {% with image.capt|cut:"'" as imgCapt %}     
                 <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src,'{{imgCapt}}','{{image.photo.url}}')"><br>
-                {% endwith %}    
-                
+                {% endwith %}
                 {% if image.capt %}
                     <h5 id="info">{{image.capt}}</h5>
                 {% else %}
@@ -124,26 +121,21 @@
                     <details>
                         <summary>Image info</summary>
                         <p>
+                            Posted by: {{image.user}}<br>
                             Catagory: {{image.catg}}<br>
-                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
-                            <span>
-                                {% if not visitor %}
-                                    <a href="{{image.photo.url}}" download="{{image.photo.url}}" > <i class="fa fa-download"></i></a>  
-                                {% endif %}
-                            </span>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}} <br><br>
+                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button class="dwn-btn"><i class="fa fa-download"></i> Download</button></a>
                         </p>
                     </details>
-
                     {% with image.capt|cut:"'" as imgCapt %}     
                     <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src,'{{imgCapt}}','{{image.photo.url}}')"><br>
-                    {% endwith %}   
-
+                    {% endwith %}                  
                     {% if image.capt %}
                         <h5 id="info">{{image.capt}}</h5>
                     {% else %}
                         <h5 id="info">( No Caption )</h5>
                     {% endif %}
-                    <br>
+                <br><br>
                 </div>
             {% endfor %}
         </div>

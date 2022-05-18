@@ -47,7 +47,9 @@
             {% if select%}
                 <div class="photo_comments">
                     <div class="frame">
-                        <img src="{{selectedimg.photo.url}}" alt="" onclick="openFullImg(this.src,'{{selectedimg.capt}}','{{selectedimg.photo.url}}')">
+                        {% with selectedimg.capt|cut:"'" as selectimgCapt %}  
+                        <img src="{{selectedimg.photo.url}}" alt="" onclick="openFullImg(this.src,'{{selectimgCapt}}','{{selectedimg.photo.url}}')">
+                        {% endwith %}
                     </div>
                     <div class="comment-section">
                         {% if selectedimg.capt %}
@@ -77,11 +79,11 @@
                         </p>
                         <br>
                         <span>
-                            <a href="{{selectedimg.photo.url}}" download="{{image.photo.url}}" >Download <i class="fa fa-download"></i></a>
+                            <a href="{{selectedimg.photo.url}}" download="{{selectedimg.photo.url}}" ><button class="dwn-btn"><i class="fa fa-download"></i> Download</button></a>
                         </span>
                         {% if not visitor %}
                         <span>
-                            <a href="{% url 'delete' selectedimg.id 'homepage'%}">Delete  <i class="fa fa-trash"></i></a> 
+                            <a href="{% url 'delete' selectedimg.id 'dashboard'%}"><button class="del-btn"><i class="fa fa-trash"></i> Delete</button></a>
                         </span>
                         {% endif %} 
                     </div>

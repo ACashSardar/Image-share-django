@@ -7,9 +7,16 @@
       </div>
   
     <div class="container">
+        {% if user.is_authenticated %}
         <a href="#"><i class="fa fa-user-circle"></i> {{user}}</a>
+        {% else %}
+        <a href="/signup/"><i class="fa fa-user-plus"></i> JOIN US</a>
+        <a href="/login/"><i class="fa fa-sign-in"></i> LOG IN</a>
+        {% endif %}
         <a href="/"><i class="fa fa-home"></i> HOME</a>
+        {% if user.is_authenticated %}
         <a href="/logout/"><i class="fa fa-sign-out"></i> LOG OUT</a>
+        {% endif %}
     </div>
 
     <div class="mobile-dash">
@@ -74,14 +81,13 @@
                 <div class="repeat">
                     <details>
                         <summary>Image info</summary>
-                        <p>
+                        <p> Posted by: {{image.user}}<br>
                             Catagory: {{image.catg}}<br>
-                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
-                            <span>
-                                {% if not visitor %}
-                                    <a href="{% url 'delete' image.id 'dashboard'%}"><i class="fa fa-trash"></i></a>  
-                                {% endif %}
-                            </span>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}} <br><br>
+                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button class="dwn-btn"><i class="fa fa-download"></i> Download</button></a>
+                            {% if not visitor %}
+                                <a href="{% url 'delete' image.id 'dashboard'%}"><button class="del-btn"><i class="fa fa-trash"></i> Delete</button></a>  
+                            {% endif %}
                         </p>
                     </details>
                     {% with image.capt|cut:"'" as imgCapt %}     
@@ -140,11 +146,10 @@
                     <details>
                         <summary>Image info</summary>
                         <p>
+                            Posted by: {{image.user}}<br>
                             Catagory: {{image.catg}}<br>
-                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
-                            <span>
-                                <a href="{{image.photo.url}}" download="{{image.photo.url}}" > <i class="fa fa-download"></i></a>
-                            </span>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}} <br><br>
+                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button class="dwn-btn"><i class="fa fa-download"></i> Download</button></a>
                         </p>
                     </details>
                     {% with image.capt|cut:"'" as imgCapt %}     

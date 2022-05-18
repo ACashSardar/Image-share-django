@@ -198,17 +198,27 @@ body {
   box-shadow:10px 20px 55px rgb(100, 100, 100);
 }
 
-.repeat span{
-  margin-left: 5px;
-  font-size: 18px;
+button{
+  font-size: 12px;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
 }
-.repeat span i{
-  color: black
+.dwn-btn{
+  background: lightseagreen;
+  border:1px solid lightseagreen;
 }
-.repeat span i:hover{
-  color: darkgray;
-  transition: all 0.3s ease;
-  transform: scale(1.03);
+.del-btn{
+  background: red;
+  border:1px solid red;
+}
+.dwn-btn:hover{
+  background: darkcyan;
+  transition: all 0.5s ease;
+}
+.del-btn:hover{
+  background: crimson;
+  transition: all 0.5s ease;
 }
 
 .comment-section span{
