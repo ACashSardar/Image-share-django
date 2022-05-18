@@ -34,7 +34,7 @@
                 <p>Categories</p><br>
             </div>
             <div class="cat-tiles">
-                <a href="{% url 'catgsearch' 'allimg' %}"><button  class="cat-items">All images</button></a>
+                <a href="{% url 'catgsearch' 'allimg' %}"><button class="cat-items">All images</button></a>
                 {% for catg in category %}
                 <a href="{% url 'catgsearch' catg %}"><button class="cat-items">{{catg}}</button></a>
                 {% endfor %}
@@ -47,7 +47,7 @@
             {% if select%}
                 <div class="photo_comments">
                     <div class="frame">
-                        <img src="{{selectedimg.photo.url}}" alt="" onclick="openFullImg(this.src)">
+                        <img src="{{selectedimg.photo.url}}" alt="" onclick="openFullImg(this.src,'{{selectedimg.capt}}','{{selectedimg.photo.url}}')">
                     </div>
                     <div class="comment-section">
                         {% if selectedimg.capt %}
@@ -77,7 +77,7 @@
                         </p>
                         <br>
                         <span>
-                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" >Download <i class="fa fa-download"></i></a>
+                            <a href="{{selectedimg.photo.url}}" download="{{image.photo.url}}" >Download <i class="fa fa-download"></i></a>
                         </span>
                         {% if not visitor %}
                         <span>

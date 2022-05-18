@@ -71,20 +71,22 @@
 
         <div class="gallery-user-profile">
             {% for image in images %}
-                <div class="repeat"> 
-                    <p id="info">Catagory: {{image.catg}}</p>  
-                    <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
-                        <span>
-                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" > <i class="fa fa-download"></i></a>
-                        </span>
-                        <span>
-                            {% if not visitor %}
-                                <a href="{% url 'delete' image.id 'dashboard'%}"> <i class="fa fa-trash"></i></a>  
-                            {% endif %}
-                        </span>
-                    </p>
-
-                    <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src)"><br> 
+                <div class="repeat">
+                    <details>
+                        <summary>Image info</summary>
+                        <p>
+                            Catagory: {{image.catg}}<br>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
+                            <span>
+                                {% if not visitor %}
+                                    <a href="{% url 'delete' image.id 'dashboard'%}"><i class="fa fa-trash"></i></a>  
+                                {% endif %}
+                            </span>
+                        </p>
+                    </details>
+                    {% with image.capt|cut:"'" as imgCapt %}     
+                    <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src,'{{imgCapt}}','{{image.photo.url}}')"><br>
+                    {% endwith %}
                     {% if image.capt %}
                         <h5 id="info">{{image.capt}}</h5>
                     {% else %}
@@ -135,13 +137,19 @@
         <div class="gallery-user-profile">
             {% for image in feeds %}
                 <div class="repeat"> 
-                    <p id="info">Posted by: {{image.user}}</p>  
-                    <p id="info"><i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
-                        <span>
-                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" > <i class="fa fa-download"></i></a>
-                        </span>
-                    </p>
-                    <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src)"><br>
+                    <details>
+                        <summary>Image info</summary>
+                        <p>
+                            Catagory: {{image.catg}}<br>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}}
+                            <span>
+                                <a href="{{image.photo.url}}" download="{{image.photo.url}}" > <i class="fa fa-download"></i></a>
+                            </span>
+                        </p>
+                    </details>
+                    {% with image.capt|cut:"'" as imgCapt %}     
+                    <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src,'{{imgCapt}}','{{image.photo.url}}')"><br>
+                    {% endwith %}                  
                     {% if image.capt %}
                         <h5 id="info">{{image.capt}}</h5>
                     {% else %}

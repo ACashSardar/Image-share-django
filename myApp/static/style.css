@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@200;300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -12,6 +11,7 @@ body {
   min-height:100vh;
   font-family: 'Comfortaa';
 }
+
 .search-bar{
   padding: 10px;
 }
@@ -50,37 +50,49 @@ body {
   left:35%;width:30%;
   padding: 30px;
   margin-top: 40px;
-  border-radius: 4px;
-  background: lavender;
+  border-radius: 5px;
+  background: linear-gradient(to bottom right, rgba(0,0,0,0.8),rgba(0,0,0,0.5));
+  border: 1px solid white;
 }
-.user-forms label,h1,p,a{
-  color: black;
+.user-forms{
+  color: white;
 }
+.user-forms h1,a{
+  color: white;
+}
+
 .user-forms label{
   font-size: 20px;
 }
 .user-forms input[type='text'],input[type='password'],.about-section input[type='text'],.mobile-dash input[type='text']{
-  background: white;
+  background: inherit;
   width: 95%;
   padding: 8px 2px;
   margin: 2px;
   border-radius: 2px;
-  border: 1px solid white;
-  color:black;  
+  border: 1px solid rgba(0,0,0,0);
+  border-bottom: 2px solid white;
+  color:white;  
 }
 .user-forms input[type='submit']{
   width: 96%;
-  background: black;
+  background: darkcyan;
   padding: 10px 10px;
-  border-radius: 2px;
-  border: 1px solid black;
+  border-radius: 4px;
+  border: 1px solid lightseagreen;
   color: white;
 }
 .user-forms input[type='submit']:hover{
-  background: white;
-  color:black;
+  background: inherit;
+  color:white;
   transition: all 0.3s ease;
-  border: 1px solid black;
+  border: 1px solid white;
+}
+
+.custom-bg{
+  background: url('https://source.unsplash.com/1500x800/?nature');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .app-name{
@@ -90,6 +102,9 @@ body {
   font-size: 25px;
   font-family: 'Comfortaa';
   line-height: 2;
+}
+.app-name p{
+  color: black;
 }
 
 
@@ -184,16 +199,16 @@ body {
 }
 
 .repeat span{
-  margin-left: 20px;
-  font-size: 16px;
+  margin-left: 5px;
+  font-size: 18px;
 }
 .repeat span i{
-  color: rgba(0, 0, 0, 0.6);
+  color: black
 }
 .repeat span i:hover{
-  color: rgb(0, 0, 0);
-  transition: all 0.2s ease;
-  transform: scale(1.05);
+  color: darkgray;
+  transition: all 0.3s ease;
+  transform: scale(1.03);
 }
 
 .comment-section span{
@@ -201,13 +216,29 @@ body {
   margin: 5px;
 }
 
-
 #info{
   color: black;
   text-align: left;
   font-size: 12px;
   margin-left: 10px;
   font-family: Calibri Light;
+}
+details{
+  text-align: left;
+  margin-left: 5px;
+}
+summary{
+  background: white;
+  color: black;
+}
+details p{
+  color: black;
+  font-size: 12px;
+  position: absolute;
+  background: white;
+  padding: 8px 10px;
+  border-radius: 4px;
+  box-shadow: 10px 20px 55px rgb(50, 50, 50);
 }
 
  .container{
@@ -228,22 +259,14 @@ body {
 }
 
 .about-section{
-  background: linear-gradient(to bottom, greenyellow 15%,black 15%);
-  border-radius: 2px;
+  background: url(https://papers.co/wallpaper/papers.co-vq17-rectangle-dark-blue-art-pattern-40-wallpaper.jpg?download=true);
   padding: 10px;
   font-family:'Comfortaa';
   margin-left: 10px;
   color: white;
   position: relative;
-  height: 94%;top:6%;
+  height: 97%;top:3%;
   background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 10px;
-}
-.glass{
-  background: rgba(255, 255, 255, 0.15);
-  padding: 10px;
-  border: 1px solid white;
   border-radius: 10px;
 }
 
@@ -301,7 +324,7 @@ textarea{
   left: 30%;
   height: 110px;
   border-radius: 50%;
-  border: 2px solid inherit;
+  border: 2px solid white;
 }
 
 .my-posts{
@@ -414,7 +437,7 @@ textarea{
   padding-top:5px;
   font-family: Calibri Light;
 }
-.comment-section h2{
+.comment-section a{
   color: black;
 }
 
@@ -442,7 +465,7 @@ textarea{
 
 .full-img{
   position: fixed;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0,0,0,0.9);
   width: 100%;
   height: 100vh;
   display: none;
@@ -453,14 +476,39 @@ textarea{
 #fullImg{
   width: 90%;
   max-width: 800px;
+  border-radius: 4px;
 }
 
 .full-img span{
   position: absolute;
-  top:5%;right:5%;
+  top:5%;
   font-size: 25px;
-  color: white;
+  color: black;
   cursor:pointer;
+}
+#dwn{
+  right:8%;
+  color: white;
+}
+#close{
+  right:5%;
+  color: white;
+}
+#dwn:hover{
+  color: gray;
+  transition: all 0.3s ease;
+}
+#close:hover{
+  color: red;
+  transition: all 0.3s ease;
+}
+
+#img-capt{
+  position: absolute;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  top:10%;padding: 15px;
+  border-radius: 3px;
 }
 
 .footer {
@@ -481,8 +529,8 @@ textarea{
     display: grid;
     grid-template-columns: 0.5fr 1.5fr;
   }
-  .about-section{
-    background: linear-gradient(to bottom, greenyellow 12%,black 12%);
+  #dwn{
+    right:10%;
   }
 }
 
@@ -505,6 +553,7 @@ textarea{
 
 .repeat{
   margin-bottom: 40px;
+  position: relative;
 }
 .gallery,.grid-container,.gallery-user-profile{
   display: grid;
@@ -517,11 +566,10 @@ textarea{
 }
 .mobile-dash{
   display:block;
-  background: linear-gradient(to bottom, greenyellow 20%,black 20%);
   border-radius: 10px;
   padding: 30px;
+  background: url(https://papers.co/wallpaper/papers.co-vq17-rectangle-dark-blue-art-pattern-40-wallpaper.jpg?download=true);
   color: white;
-  
   margin: 10px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -585,7 +633,9 @@ textarea{
 .comment-section span{
   font-size: 12px;
 }
-
+#dwn{
+  right:14%;
+}
 .footer {
   font-size:11px;
 }
