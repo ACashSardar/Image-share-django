@@ -14,8 +14,10 @@
       <a href="/login/"><i class="fa fa-sign-in"></i> LOG IN</a>
     </div>
     <div class="user-forms">
+      <center>
         <h1>SIGN-UP HERE</h1>
-  
+      </center>
+      <br>
         <form method="post" action="/signup/">
             {% csrf_token %} 
             {% for field in form %}

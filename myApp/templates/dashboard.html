@@ -29,14 +29,14 @@
         <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
     {% endfor %}
     {% if not visitor %}
-        <a href="/editprofile/"><p><i class="fa fa-edit"></i><strong> Edit Profile</strong></p></a><br>
-        {% else %}
+        <a href="/editprofile/"><button class="follow-btn"><i class="fa fa-edit"></i> Edit Profile</button></a><br>
+    {% else %}
         {% for ui in userinfo %}
-            {% if not follow and member%}
-                <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-user-plus"></i><strong> Follow</strong></p></a><br>
-            {% elif follow and member%}
-                <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-bell-slash-o"></i><strong> Unfollow</strong></p></a><br>
-            {% endif %}
+        {% if not follow and member%} 
+            <a href="{% url 'follow' ui.id %}"><button class="follow-btn"><i class="fa fa-user-plus"></i> Follow</button></a><br>
+        {% elif follow and member%}
+            <a href="{% url 'follow' ui.id %}"><button class="follow-btn"><i class="fa fa-bell-slash-o"></i> Unfollow</button></a><br>
+        {% endif %}
         {% endfor %}
     {% endif %}
     </div>
@@ -64,13 +64,13 @@
             <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
         {% endfor %}
         {% if not visitor %}
-            <a href="/editprofile/"><p><i class="fa fa-edit"></i><strong> Edit Profile</strong></p></a><br>
+            <a href="/editprofile/"><button class="follow-btn"><i class="fa fa-edit"></i> Edit Profile</button></a><br>
             {% else %}
             {% for ui in userinfo %}
                 {% if not follow and member%} 
-                    <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-user-plus"></i><strong> Follow</strong></p></a><br>
+                    <a href="{% url 'follow' ui.id %}"><button class="follow-btn"><i class="fa fa-user-plus"></i> Follow</button></a><br>
                 {% elif follow and member%}
-                    <a href="{% url 'follow' ui.id %}"><p><i class="fa fa-bell-slash-o"></i><strong> Unfollow</strong></p></a><br>
+                    <a href="{% url 'follow' ui.id %}"><button class="follow-btn"><i class="fa fa-bell-slash-o"></i> Unfollow</button></a><br>
                 {% endif %}
             {% endfor %}
         {% endif %}

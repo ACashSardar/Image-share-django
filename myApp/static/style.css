@@ -42,23 +42,23 @@ body {
   background: black;
   font-weight: bold;
   border: 2px solid black;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .user-forms{
   position: relative;
   left:35%;width:30%;
-  padding: 30px;
-  margin-top: 40px;
-  border-radius: 5px;
-  background: linear-gradient(to bottom right, rgba(0,0,0,0.8),rgba(0,0,0,0.5));
+  padding: 20px;
+  margin-top: 25px;
+  border-radius: 15px;
+  background: white;
   border: 1px solid white;
 }
 .user-forms{
-  color: white;
+  color: black;
 }
 .user-forms h1,a{
-  color: white;
+  color: lightseagreen;
 }
 
 .user-forms label{
@@ -71,26 +71,26 @@ body {
   margin: 2px;
   border-radius: 2px;
   border: 1px solid rgba(0,0,0,0);
-  border-bottom: 2px solid white;
-  color:white;  
+  border-bottom: 2px solid black;
 }
 .user-forms input[type='submit']{
-  width: 96%;
-  background: darkcyan;
+  width: 96%;color: white;
+  background:  lightseagreen;
   padding: 10px 10px;
   border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 2px;
   border: 1px solid lightseagreen;
-  color: white;
 }
 .user-forms input[type='submit']:hover{
   background: inherit;
-  color:white;
+  color:lightseagreen;
   transition: all 0.3s ease;
-  border: 1px solid white;
+  border: 1px solid lightseagreen;
 }
 
 .custom-bg{
-  background: url('https://source.unsplash.com/1500x800/?nature');
+  background: linear-gradient(to bottom right, darkcyan, lightseagreen);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -102,6 +102,7 @@ body {
   font-size: 25px;
   font-family: 'Comfortaa';
   line-height: 2;
+  letter-spacing: 0.3vw;
 }
 .app-name p{
   color: black;
@@ -269,7 +270,7 @@ details p{
 }
 
 .about-section{
-  background: url(https://papers.co/wallpaper/papers.co-vq17-rectangle-dark-blue-art-pattern-40-wallpaper.jpg?download=true);
+  background: darkcyan;
   padding: 10px;
   font-family:'Comfortaa';
   margin-left: 10px;
@@ -293,19 +294,24 @@ details p{
 }
 
 .about-section input[type='submit'],.mobile-dash input[type='submit']{
-  background: white;
+  background: rgba(255, 255, 255,0.4);
   padding: 4px 15px;
   border-radius: 2px;
-  border: 1px solid white;
+  color: white;
+  border: 1px solid rgba(255, 255, 255,0.7);
+  font-family: Comfortaa;
+}
+.about-section input[type='text'],.mobile-dash input[type='text']{
+  color: white;
+  border-bottom: 2px solid white;
 }
 .about-section input[type='submit']:hover{
-  background: greenyellow;
-  border: 1px solid greenyellow;
+  background: rgba(255, 255, 255,0.2);
   transition: all 0.3s ease;
 }
+
 .mobile-dash input[type='submit']:hover{
-  background: greenyellow;
-  border: 1px solid greenyellow;
+  background: rgba(255, 255, 255,0.2);
   transition: all 0.3s ease;
 }
 
@@ -392,27 +398,24 @@ textarea{
 }
 
 .save-btn{
-  padding: 4px;
+  padding: 5px 15px 4px 15px;
   border-radius: 2px;
-  background: white;
-  border: 1px solid white;
+  background: rgba(255, 255, 255,0.4);
+  border: 1px solid rgba(255, 255, 255,0.7);
 }
 .save-btn a{
-  color: black;
-  font-weight: bold;
+  color: white;
   text-decoration: none;
+  font-family: Comfortaa;
 }
 .about-section button:hover{
-  background: greenyellow;
-  border: 1px solid greenyellow;
+  background: rgba(255, 255, 255,0.2);
   transition: all 0.3s ease;
-  
 }
+
 .mobile-dash button:hover{
-  background: greenyellow;
-  border: 1px solid greenyellow;
+  background: rgba(255, 255, 255,0.2);
   transition: all 0.3s ease;
-  
 }
 
 .photo_comments{
@@ -521,12 +524,93 @@ textarea{
   border-radius: 3px;
 }
 
+.follow-btn{
+  background: rgba(255, 255, 255,0.3);
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255,0.7);;
+  border-radius: 4px;
+  font-family: comfortaa;
+}
+
+.follow-btn:hover i{
+  color: white;
+}
+
 .footer {
   background-color: rgba(0, 0, 0, 0.8);
   position: relative;
   text-align: center;
   font-size: calc(11px + 0.4vw);
-  padding: 25px 0px;
+  padding: 25px 5px;
+}
+.footer ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer ul a{
+  text-decoration: none;
+  margin: 5px;
+  border-radius: 50%;
+  border: 1px solid white;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer ul a i{
+  height:35px;width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer ul a:nth-child(1){
+  color: lightseagreen;
+  border-color: lightseagreen;
+}
+.footer ul a:nth-child(1):hover{
+  color: white;
+  background: lightseagreen;
+  border: 1px solid lightseagreen;
+}
+
+.footer ul a:nth-child(2){
+  color: white;
+  border-color: white;
+}
+.footer ul a:nth-child(2):hover{
+  color: black;
+  background: white;
+  border: 1px solid white;
+}
+
+.footer ul a:nth-child(3){
+  color: cyan;
+  border-color: cyan;
+}
+.footer ul a:nth-child(3):hover{
+  color: white;
+  background: cyan;
+  border: 1px solid cyan;
+}
+
+.footer ul a:nth-child(4){
+  color: hotpink;
+  border-color: hotpink;
+}
+.footer ul a:nth-child(4):hover{
+  color: white;
+  background: hotpink;
+  border: 1px solid hotpink;
+}
+
+.footer ul a:nth-child(5){
+  color: lime;
+  border-color: lime;
+}
+.footer ul a:nth-child(5):hover{
+  color: white;
+  background: lime;
+  border: 1px solid lime;
 }
 
 @media only screen and (max-width: 1400px){
@@ -578,7 +662,7 @@ textarea{
   display:block;
   border-radius: 10px;
   padding: 30px;
-  background: url(https://papers.co/wallpaper/papers.co-vq17-rectangle-dark-blue-art-pattern-40-wallpaper.jpg?download=true);
+  background: darkcyan;
   color: white;
   margin: 10px;
   background-repeat: no-repeat;
