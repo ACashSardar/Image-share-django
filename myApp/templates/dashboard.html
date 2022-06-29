@@ -1,171 +1,305 @@
 {% include 'header.html' %}
+
     <title>Dashboard</title>
-</head>
-<body>
-    <div class="app-name">
-        <p><i class="fa fa-camera"></i> Image Share <i class="fa fa-share-alt"></i></p>
-      </div>
-  
-    <div class="container">
-        {% if user.is_authenticated %}
-        <a href="#"><i class="fa fa-user-circle"></i> {{user}}</a>
-        {% else %}
-        <a href="/signup/"><i class="fa fa-user-plus"></i> JOIN US</a>
-        <a href="/login/"><i class="fa fa-sign-in"></i> LOG IN</a>
-        {% endif %}
-        <a href="/"><i class="fa fa-home"></i> HOME</a>
-        {% if user.is_authenticated %}
-        <a href="/logout/"><i class="fa fa-sign-out"></i> LOG OUT</a>
-        {% endif %}
-    </div>
-
-    <div class="mobile-dash">
-        {% for ui in userinfo %}
-        <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
-        <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}</p><br>
-        <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong> {{ui.email}}</p><br>
-        <p><i class="fa fa-info-circle"></i><strong> About: </strong> {{ui.about}}</p><br>
-        <p><i class="fa fa-leaf"></i><strong> Contribution: </strong> {{images|length}} images</p><br>
-        <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
-    {% endfor %}
-    {% if not visitor %}
-        <a href="/editprofile/"><button class="follow-btn"><i class="fa fa-edit"></i> Edit Profile</button></a><br>
-    {% else %}
-        {% for ui in userinfo %}
-        {% if not follow and member%} 
-            <a href="{% url 'follow' ui.id %}"><button class="follow-btn"><i class="fa fa-user-plus"></i> Follow</button></a><br>
-        {% elif follow and member%}
-            <a href="{% url 'follow' ui.id %}"><button class="follow-btn"><i class="fa fa-bell-slash-o"></i> Unfollow</button></a><br>
-        {% endif %}
-        {% endfor %}
-    {% endif %}
-    </div>
-
-    <br><br>
-    <div class="my-posts">
-        {% if not visitor %}
-        <h2><i class="fa fa-image"></i> My Posts</h2>
-            {% if not images %}
-                <p> ( You haven't posted anything )</p>
-            {% endif %}
-        {% else %}
-        <h2><i class="fa fa-image"></i> {{userinfo.first}}'s Posts</h2>
-        {% endif %}
-    </div><br>
-    
-    <div class="grid-container">
-        <div class="about-section">
-        {% for ui in userinfo %}
-            <img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" id="profile-pic"><br><br>
-            <p><i class="fa fa-user-o"></i><strong> Username: </strong>{{ui.user}}</p><br>
-            <p><i class="fa fa-envelope-open-o"></i><strong> Email: </strong> {{ui.email}}</p><br>
-            <p><i class="fa fa-info-circle"></i><strong> About: </strong> {{ui.about}}</p><br>
-            <p><i class="fa fa-leaf"></i><strong> Contribution: </strong> {{images|length}} images</p><br>
-            <p><i class="fa fa-feed"></i><strong> Followers: </strong>{{ui.followers.count}}, <strong>Followings: </strong>{{ui.followings.count}}</p><br>
-        {% endfor %}
-        {% if not visitor %}
-            <a href="/editprofile/"><button class="follow-btn"><i class="fa fa-edit"></i> Edit Profile</button></a><br>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid py-2">
+        <a class="navbar-brand text-success text-lg" href="#"
+          ><i class="fa fa-image" style="color: lightseagreen"></i> Image
+          Share</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form
+          class="d-flex m-auto bg-info"
+          role="search"
+          style="border-radius: 5px; width: 75%"
+          action="/manualsearch/"
+          method="post"
+        >
+          {% csrf_token %}
+          <input
+            class="form-control me-0"
+            type="search"
+            placeholder="Search HD wallpapers here"
+            aria-label="Search"
+            style="border-radius: 2px"
+            name="searchbar"
+          />
+          <button class="btn text-light btn-info" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+          </form>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><i class="fa fa-user-circle"></i> {{user}}</a
+              >
+            </li>
             {% else %}
-            {% for ui in userinfo %}
-                {% if not follow and member%} 
-                    <a href="{% url 'follow' ui.id %}"><button class="follow-btn"><i class="fa fa-user-plus"></i> Follow</button></a><br>
-                {% elif follow and member%}
-                    <a href="{% url 'follow' ui.id %}"><button class="follow-btn"><i class="fa fa-bell-slash-o"></i> Unfollow</button></a><br>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-        </div>
-
-        <div class="gallery-user-profile">
-            {% for image in images %}
-                <div class="repeat">
-                    <details>
-                        <summary>Image info</summary>
-                        <p> Posted by: {{image.user}}<br>
-                            Catagory: {{image.catg}}<br>
-                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}} <br><br>
-                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button class="dwn-btn"><i class="fa fa-download"></i> Download</button></a>
-                            {% if not visitor %}
-                                <a href="{% url 'delete' image.id 'dashboard'%}"><button class="del-btn"><i class="fa fa-trash"></i> Delete</button></a>  
-                            {% endif %}
-                        </p>
-                    </details>
-                    {% with image.capt|cut:"'" as imgCapt %}     
-                    <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src,'{{imgCapt}}','{{image.photo.url}}')"><br>
-                    {% endwith %}
-                    {% if image.capt %}
-                        <h5 id="info">{{image.capt}}</h5>
-                    {% else %}
-                        <h5 id="info">( No Caption )</h5>
-                    {% endif %}
-                    <br>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    <br><br>
-    <div class="my-posts">
-        {% if not visitor %}
-            <h2><i class="fa fa-image"></i> My Feeds</h2>
-            {% if not feeds %}
-                <p> ( You don't follow anyone )</p>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup/">
+                <i class="fa fa-user-plus"></i> JOIN US
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup/">
+                <i class="fa fa-sign-in"></i> LOG IN
+              </a>
+            </li>
             {% endif %}
-        {% endif %}
-    </div><br>
+            <li class="nav-item">
+              <a class="nav-link" href="/"> <i class="fa fa-home"></i> HOME </a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout/">
+                <i class="fa fa-sign-out"></i> LOG OUT
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <div class="grid-container">
-        <div >
-            <div class="upload">
-                {% if not visitor %}
-                <form action="/" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <center>
-                        <img src="https://us.123rf.com/450wm/koblizeek/koblizeek1902/koblizeek190200055/125337077-no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-.jpg?ver=6" alt="" id="displayImg">
-                    </center>
-                    <label for="inputImg" id="custom-upload"><i class="fa fa-plus"></i> Choose a file to upload</label>
-                    <input type="file" name="photo" accept="image/*" id="inputImg" hidden><br>
-                    <textarea name="caption" id="" cols="46" rows="3" placeholder=" Add a caption for the image"></textarea><br>
-                    <label> Select a category </label>
-                    <select name="category" id="select-catagory">
-                        {% for catg in category %}
-                            <option value="{{catg}}">{{catg}}</option>
-                        {% endfor %}
-                    </select><br><br>
-                    <input type="checkbox" name="chbx" value="checked">
-                    <input type="text" id="new-catagory" name="newcatg" placeholder="Add a new category">
-                    <button id="upload-icon">Upload <i class="fa fa-upload"></i></button><br>
-                </form>
-                {% endif %}
+    <div class="container-fluid px-5 py-3 d-flex justify-content-center">
+      <div class="row">
+        <div class="col-xl-6 col-12 p-1">
+          <div class="card" style="border: 0px; width: 25rem">
+            <img
+              src="https://cdn2.iconfinder.com/data/icons/user-people-4/48/6-512.png"
+              class="card-img-top mx-3"
+              alt="..."
+              style="width: 12rem; height: 12rem"
+            />
+            <div class="card-body">
+              {% for ui in userinfo %}
+              <p class="card-text">
+                <i class="fa fa-user-o"></i
+                ><strong> Username: </strong>{{ui.user}}
+              </p>
+              <p class="card-text">
+                <i class="fa fa-envelope-open-o"></i
+                ><strong> Email: </strong> {{ui.email}}
+              </p>
+              <p class="card-text">
+                <i class="fa fa-info-circle"></i
+                ><strong> About: </strong> {{ui.about}}
+              </p>
+              <p class="card-text">
+                <i class="fa fa-leaf"></i
+                ><strong> Contribution: </strong> {{images|length}} images
+              </p>
+              <p class="card-text">
+                <i class="fa fa-feed"></i
+                ><strong> Followers: </strong>{{ui.followers.count}},
+                <strong>Followings: </strong>{{ui.followings.count}}
+              </p>
+              {% endfor %} {% if not visitor %}
+              <a href="/editprofile/">
+                <button type="button" class="btn btn-primary">
+                  <i class="fa fa-edit"></i> Edit Profile
+                </button>
+              </a>
+              <br />
+              {% else %} {% for ui in userinfo %} {% if not follow and member%}
+
+              <a href="{% url 'follow' ui.id %}"
+                ><button class="btn btn-info text-light">
+                  <i class="fa fa-user-plus"></i> Follow
+                </button>
+              </a>
+              <br />
+
+              {% elif follow and member%}
+              <a href="{% url 'follow' ui.id %}"
+                ><button class="btn btn-danger">
+                  <i class="fa fa-bell-slash-o"></i> Unfollow
+                </button>
+              </a>
+              <br />
+              {% endif %} {% endfor %} {% endif %}
             </div>
+          </div>
         </div>
 
-        <div class="gallery-user-profile">
-            {% for image in feeds %}
-                <div class="repeat"> 
-                    <details>
-                        <summary>Image info</summary>
-                        <p>
-                            Posted by: {{image.user}}<br>
-                            Catagory: {{image.catg}}<br>
-                            <i class="fa fa-calendar" aria-hidden="true"></i> {{image.date}} <br><br>
-                            <a href="{{image.photo.url}}" download="{{image.photo.url}}" ><button class="dwn-btn"><i class="fa fa-download"></i> Download</button></a>
-                        </p>
-                    </details>
-                    {% with image.capt|cut:"'" as imgCapt %}     
-                    <img src="{{image.photo.url}}" alt="" onclick="openFullImg(this.src,'{{imgCapt}}','{{image.photo.url}}')"><br>
-                    {% endwith %}                  
-                    {% if image.capt %}
-                        <h5 id="info">{{image.capt}}</h5>
-                    {% else %}
-                        <h5 id="info">( No Caption )</h5>
-                    {% endif %}
-                <br><br>
-                </div>
-            {% endfor %}
+        {% if not visitor %}
+        <div class="col-xl-6 col-12 p-1">
+          <div class="card" style="border: 0; width: 25rem">
+            <img
+              src="https://us.123rf.com/450wm/koblizeek/koblizeek1902/koblizeek190200055/125337077-no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-.jpg?ver=6"
+              alt=""
+              id="displayImg"
+              class="card-img-top my-0"
+              style="height: 12rem; width: 15rem; border: 0"
+            />
+            <div class="card-body">
+              <form action="/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label
+                  for="inputImg"
+                  id="custom-upload"
+                  class="btn btn-secondary"
+                >
+                  <i class="fa fa-plus"></i>
+                  Choose a file to upload
+                </label>
+
+                <br />
+
+                <input
+                  type="file"
+                  name="photo"
+                  accept="image/*"
+                  id="inputImg"
+                  hidden
+                /><br />
+
+                <textarea
+                  name="caption"
+                  id=""
+                  cols="28"
+                  rows="3"
+                  placeholder=" Add a caption for the image"
+                ></textarea
+                ><br />
+                <label> Select a category </label>
+                <select name="category" id="select-catagory">
+                  {% for catg in category %}
+                  <option value="{{catg}}">{{catg}}</option>
+                  {% endfor %}</select
+                ><br /><br />
+                <input type="checkbox" name="chbx" value="checked" />
+                <input
+                  type="text"
+                  id="new-catagory"
+                  name="newcatg"
+                  placeholder="Add a new category"
+                  style="width:59% ;"
+                />
+                <br /><br />
+                <button id="upload-icon" class="btn btn-success">
+                  Upload <i class="fa fa-upload"></i></button
+                ><br />
+              </form>
+            </div>
+          </div>
         </div>
+        {% endif %}
+      </div>
     </div>
-    <br><br>
 
-{% include 'footer.html' %}
+    <div class="container-fluid px-5 py-3">
+      {% if not visitor %}
+      <h2>Images You've Shared</h2>
+      {% if not images %}
+      <p>You have not yet posted anything</p>
+      {% endif %} {% else %}
+      <h2>{{userinfo.first}}'s Posts</h2>
+      {% endif %}
+      <hr />
 
+      <div class="row" id="news">
+        {% for image in images %}
+        <div class="col-xl-4 col-md-6 col-12 p-1">
+          <div class="card-body">
+            <details>
+            <summary>Image info</summary>
+              <p>
+                <strong>
+                  {% if image.capt %} {{image.capt}} {% else %} ( No Caption )
+                  {%endif %}
+                </strong>
+
+                <br />
+                Posted by: {{image.user}}<br />
+                Catagory: {{image.catg}}<br />
+                Posted on: {{image.date}}
+                <br />
+                <a href="{{image.photo.url}}" download="{{image.photo.url}}">
+                  <button class="btn btn-success btn-sm my-1">
+                    <i class="fa fa-download"></i> Download
+                  </button>
+                </a>
+                {% if not visitor %}
+                <a href="{% url 'delete' image.id 'dashboard'%}">
+                  <button class="btn btn-danger btn-sm my-1">
+                    <i class="fa fa-trash"></i> Delete
+                  </button>
+                </a>
+                {%endif%}
+              </p>
+            </details>
+            {% with image.capt|cut:"'" as imgCapt %}
+            <img
+              src="{{image.photo.url}}"
+              class="card-img-top"
+              onclick="openFullImg(this.src,'{{imgCapt}}','{{image.photo.url}}')"
+              alt="..."
+            />
+            {% endwith %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="container-fluid px-5 py-3">
+      {% if not visitor %}
+      <h2>From The People You Follow</h2>
+      <hr />
+      {% if not feeds %}
+      <p>You have not yet followed anyone</p>
+      {% endif %} {% endif %}
+
+      <div class="row" id="news">
+        {% for image in feeds %}
+        <div class="col-xl-4 col-md-6 col-12 p-1">
+          <div class="card-body">
+            <details>
+              <summary>Image info</summary>
+              <p>
+                <strong>
+                  {% if image.capt %} {{image.capt}} {% else %} ( No Caption )
+                  {%endif %}
+                </strong>
+
+                <br />
+                Posted by: {{image.user}}<br />
+                Catagory: {{image.catg}}<br />
+                Posted on: {{image.date}}
+                <br />
+                <a href="{{image.photo.url}}" download="{{image.photo.url}}">
+                  <button class="btn btn-success btn-sm my-1">
+                    <i class="fa fa-download"></i> Download
+                  </button>
+                </a>
+              </p>
+            </details>
+            {% with image.capt|cut:"'" as imgCapt %}
+            <img
+              src="{{image.photo.url}}"
+              class="card-img-top"
+              onclick="openFullImg(this.src,'{{imgCapt}}','{{image.photo.url}}')"
+              alt="..."
+            />
+            {% endwith %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% include 'footer.html' %}

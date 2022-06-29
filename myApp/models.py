@@ -1,4 +1,3 @@
-import email
 from django.db import models
 from django.forms import DateTimeField, FileField
 from django.contrib.auth.models import User

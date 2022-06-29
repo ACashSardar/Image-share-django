@@ -2,31 +2,75 @@
     <title>LOG IN Page</title>
   </head>
 
-  <body class="custom-bg">
-    <div class="app-name">
-      <p><i class="fa fa-camera"></i> Image Share <i class="fa fa-share-alt"></i></p>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid py-2">
+        <a class="navbar-brand text-success text-lg" href="#"
+          ><i class="fa fa-image" style="color: lightseagreen"></i> Image
+          Share</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <form
+          class="d-flex m-auto bg-info"
+          role="search"
+          style="border-radius: 5px; width: 75%"
+          action="/manualsearch/"
+          method="post"
+        >
+          {% csrf_token %}
+          <input
+            class="form-control me-0"
+            type="search"
+            placeholder="Search HD wallpapers here"
+            aria-label="Search"
+            style="border-radius: 2px"
+            name="searchbar"
+          />
+          <button class="btn text-light btn-info" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+          </form>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item">
+              <a class="nav-link" href="/"> <i class="fa fa-home"></i> HOME </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup/"> <i class="fa fa-pencil-square-o"></i> SIGN UP </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid bg-info">
+      <div class="row justify-content-center my-5">
+        <div class="card" style="width: 25rem;">
+          <div class="card-body">
+            <h3 class="card-title">LOG-IN HERE</h3>
+            <hr>
+            <form method="post" action="/login/">
+              {% csrf_token %} 
+              <h5 class="card-text">Username</h5>
+              <input type="text" name="username" placeholder="Enter username" class="form-control p-2" style="border: 0;"><br><br>
+              <h5 class="card-text">Password</h5>
+              <input type="password" name="password" placeholder="Enter password" class="form-control"><br><br>
+              <input class="btn btn-success" type="submit" value="LOGIN">
+            </form>
+            <p>Don't have an account yet? <a href="/signup">SIGN UP</a></p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="container">
-      <a href="/"><i class="fa fa-home"></i> HOME</a>
-      <a href="/signup/"><i class="fa fa-pencil-square-o"></i> SIGN UP</a>
-    </div>
-
-    <div class="user-forms">
-      <center>
-        <h1>LOG-IN HERE</h1>
-      </center>
-      <br>
-      <form method="post" action="/login/">
-          {% csrf_token %} 
-          <label>username</label>
-          <input type="text" name="username" placeholder="Enter username"><br><br>
-          <label>password</label>
-          <input type="password" name="password" placeholder="Enter password"><br><br><br>
-          <input class="btn btn-success" type="submit" value="LOGIN">
-      </form><br>
-      <p>Don't have an account yet? <a href="/signup">SIGN UP</a></p>
-    </div>
-    <br><br><br><br><br><br><br>
-  </body>
-</html>
+    {% include 'footer.html' %}

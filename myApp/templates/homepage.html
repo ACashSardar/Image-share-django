@@ -1,107 +1,190 @@
-{% include 'header.html' %}
 
-<title>Homepage</title>
-</head>
-<body>
-    <div class="app-name">
-        <p><i class="fa fa-camera"></i> Image Share <i class="fa fa-share-alt"></i></p>
-    </div>
+    {% include 'header.html' %}
 
-    <div class="container">
-        {% if registered %}
-        <a href="#"><i class="fa fa-user-circle"></i> {{user}}</a>
-        <a href="/dashboard/"><i class="fa fa-address-card-o"></i> PROFILE</a>
-        <a href="/logout/"><i class="fa fa-sign-out"></i> LOG OUT</a>
-        {% else %}
-        <a href="/signup/"><i class="fa fa-user-plus"></i> JOIN US</a>
-        <a href="/login/"><i class="fa fa-sign-in"></i> LOG IN</a>
-        {% endif %}
-    </div>
-
-    <div class="search-bar">
-        <form action="/manualsearch/" method="post">
+    <title>Homepage</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid py-2">
+        <a class="navbar-brand text-success text-lg" href="#"
+          ><i class="fa fa-image" style="color: lightseagreen"></i> Image
+          Share</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form
+            class="d-flex m-auto bg-info"
+            role="search"
+            style="border-radius: 5px; width: 75%"
+            action="/manualsearch/"
+            method="post"
+          >
             {% csrf_token %}
-            <input type="text" placeholder="Search here by catagory name.." name="searchbar">
-            <input type="submit" value="Search">
-        </form>
-    </div>
-    <br>
-
-
-    <div class="grid-container">
-        <div class="category-list">
-            <div class="my-posts">
-                <p>Categories</p><br>
-            </div>
-            <div class="cat-tiles">
-                <a href="{% url 'catgsearch' 'allimg' %}"><button class="cat-items">All images</button></a>
-                {% for catg in category %}
-                <a href="{% url 'catgsearch' catg %}"><button class="cat-items">{{catg}}</button></a>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="tiles">
-            <div class="my-posts">
-                <p>Click on the image to view full size</p><br>
-            </div>
-            {% if select%}
-                <div class="photo_comments">
-                    <div class="frame">
-                        {% with selectedimg.capt|cut:"'" as selectimgCapt %}  
-                        <img src="{{selectedimg.photo.url}}" alt="" onclick="openFullImg(this.src,'{{selectimgCapt}}','{{selectedimg.photo.url}}')">
-                        {% endwith %}
-                    </div>
-                    <div class="comment-section">
-                        {% if selectedimg.capt %}
-                            <h3>{{selectedimg.capt}}</h3><br>
-                        {% else %}
-                            <h3>( No Caption )</h3><br>
-                        {% endif %}
-                        
-                        <a href="{% url 'onclick' selectedimg.user %}">
-                        <div class="pic-name-email">
-                            <div class="section1">
-                                <h1 style="color:white;">{{profile.user|upper|make_list|first}}</h1>
-                            </div>
-                            <div class="section2">
-                                <label><strong>{{selectedimg.user.username}}</strong></label><br>
-                                <label><i>{{profile.email}}</i></label>
-                            </div>
-                        </div></a>
-                        <br>
-                        <p>Followers: {{profile.followers.count}}, Followings: {{profile.followings.count}}</p><br>
-                        <p>
-                            <label>Posted on <br>{{selectedimg.date}}</label>
-                        </p>
-                        <br>
-                        <p>
-                            <label>Image Category: {{selectedimg.catg}}</label>
-                        </p>
-                        <br>
-                        <span>
-                            <a href="{{selectedimg.photo.url}}" download="{{selectedimg.photo.url}}" ><button class="dwn-btn"><i class="fa fa-download"></i> Download</button></a>
-                        </span>
-                        {% if not visitor %}
-                        <span>
-                            <a href="{% url 'delete' selectedimg.id 'dashboard'%}"><button class="del-btn"><i class="fa fa-trash"></i> Delete</button></a>
-                        </span>
-                        {% endif %} 
-                    </div>
-                </div>
-            <div class="my-posts">
-                <p>More images like this..</p>
-            </div><br>
+            <input
+              class="form-control me-0"
+              type="search"
+              placeholder="Search HD wallpapers here"
+              aria-label="Search"
+              style="border-radius: 2px"
+              name="searchbar"
+            />
+            <button class="btn text-light btn-info" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if registered %}
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><i class="fa fa-user-circle"></i> {{user}}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard/"
+                ><i class="fa fa-address-card-o"></i> PROFILE</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout/"
+                ><i class="fa fa-sign-out"></i> LOG OUT</a
+              >
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/signup/"
+                ><i class="fa fa-user-plus"></i> JOIN US</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login/"
+                ><i class="fa fa-sign-in"></i> LOG IN</a
+              >
+            </li>
             {% endif %}
-            <div class="gallery">
-                {% for image in images %}
-                    <div class="repeat">   
-                        <a href="{% url 'selectimg' image.catg image.id %}">
-                            <img src="{{image.photo.url}}" alt=""><br>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
+          </ul>
         </div>
-    </div> 
-    <br><br>
-{% include 'footer.html' %}
+      </div>
+    </nav>
+
+    <div class="container-fluid px-5 py-3">
+      <h2>Catagories</h2>
+      <hr />
+      <a href="{% url 'catgsearch' 'allimg' %}" style="text-decoration: none">
+        <button type="button" class="btn btn-outline-secondary my-1">
+          All images
+        </button>
+      </a>
+      {% for catg in category %}
+      <a href="{% url 'catgsearch' catg %}" style="text-decoration: none">
+        <button type="button" class="btn btn-outline-secondary my-1">
+          {{catg}}
+        </button>
+      </a>
+      {% endfor %}
+    </div>
+
+    {% if select %}
+    <div class="container-fluid px-5 py-3">
+      <div class="row">
+        <div class="col-xl-6 col-12 p-1">
+          <div class="card">
+              {% with selectedimg.capt|cut:"'" as selectimgCapt %}
+              <img
+                src="{{selectedimg.photo.url}}"
+                class="card-img-top"
+                alt="..."
+                onclick="openFullImg(this.src,'{{selectimgCapt}}','{{selectedimg.photo.url}}')"
+              />
+              {% endwith %}
+          </div>
+        </div>
+        <div class="col-xl-6 col-12 p-1">
+          <div class="card">
+            <div class="card-body">
+              {% if selectedimg.capt %}
+              <h5 class="card-title">{{selectedimg.capt}}</h5>
+              {% else %}
+              <p class="card-text">< No Caption ></p>
+              <br />
+              {% endif %}
+
+              <a href="{% url 'onclick' selectedimg.user %}">
+                <h1>
+                  <span class="badge bg-secondary"
+                    >{{profile.user|upper|make_list|first}}</span
+                  >
+                </h1>
+                <label><strong>{{selectedimg.user.username}}</strong></label>
+                <br />
+                <label><i>{{profile.email}}</i></label>
+              </a>
+              <br />
+
+              <p>
+                Followers: {{profile.followers.count}}, Followings:
+                {{profile.followings.count}}
+              </p>
+              <br />
+              <p>
+                <label>Posted on <br />{{selectedimg.date}}</label>
+              </p>
+              <br />
+              <p>
+                <label>Image Category: {{selectedimg.catg}}</label>
+              </p>
+
+              <a href="{{selectedimg.photo.url}}">
+                <button
+                  download="{{selectedimg.photo.url}}"
+                  type="button"
+                  class="btn btn-success"
+                >
+                  <i class="fa fa-download"></i> Download
+                </button>
+              </a>
+              {% if not visitor %}
+              <a href="{% url 'delete' selectedimg.id 'dashboard'%}">
+                <button type="button" class="btn btn-danger">
+                  <i class="fa fa-trash"></i> Delete
+                </button>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="container-fluid px-5 py-3">
+      {% if select %}
+      <h2>More Wallpapers like this</h2>
+      {% else %}
+      <h2>HD Wallpapers</h2>
+      {% endif %}
+      <hr />
+      <div class="row" id="news">
+        {% for image in images %}
+        <div class="col-xl-4 col-md-6 col-12 p-1">
+          <div class="card-body">
+            <a href="{% url 'selectimg' image.catg image.id %}">
+              <img src="{{image.photo.url}}" class="card-img-top" alt="..." />
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% include 'footer.html' %}
+
