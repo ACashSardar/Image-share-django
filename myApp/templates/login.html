@@ -5,12 +5,12 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid py-2">
-        <a class="navbar-brand text-success text-lg" href="#"
-          ><i class="fa fa-image" style="color: lightseagreen"></i> Image
-          Share</a
-        >
+        <a class="navbar-brand" id="site-name" href="#"
+          ><i class="fa fa-fire"></i> Image Share
+        </a>
+
         <button
-          class="navbar-toggler"
+          class="navbar-toggler"  
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -55,17 +55,18 @@
 
     <div class="container-fluid bg-info">
       <div class="row justify-content-center my-5">
-        <div class="card" style="width: 25rem;">
+        <div class="card auth-card" style="width: 25rem;">
           <div class="card-body">
             <h3 class="card-title">LOG-IN HERE</h3>
             <hr>
             <form method="post" action="/login/">
               {% csrf_token %} 
-              <h5 class="card-text">Username</h5>
-              <input type="text" name="username" placeholder="Enter username" class="form-control p-2" style="border: 0;"><br><br>
-              <h5 class="card-text">Password</h5>
-              <input type="password" name="password" placeholder="Enter password" class="form-control"><br><br>
-              <input class="btn btn-success" type="submit" value="LOGIN">
+              <p class="card-text signup-field-name">Username</p>
+              <input type="text" name="username" placeholder="Enter username" class="login-input-box" style="  border: 0px;
+              border-bottom: 1px solid #333;border-radius:0"><br>
+              <p class="card-text signup-field-name">Password</p>
+              <input type="password" name="password" placeholder="Enter password" class="login-input-box"><br><br>
+              <input class="btn btn-info text-light" type="submit" value="LOGIN">
             </form>
             <p>Don't have an account yet? <a href="/signup">SIGN UP</a></p>
           </div>

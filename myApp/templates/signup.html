@@ -5,10 +5,10 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid py-2">
-        <a class="navbar-brand text-success text-lg" href="#"
-          ><i class="fa fa-image" style="color: lightseagreen"></i> Image
-          Share</a
-        >
+        <a class="navbar-brand" id="site-name" href="#"
+          ><i class="fa fa-fire"></i> Image Share
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -56,18 +56,18 @@
     
     <div class="container-fluid bg-info">
       <div class="row justify-content-center my-5">
-        <div class="card" style="width: 25rem;">
+        <div class="card auth-card" style="width: 25rem;">
           <div class="card-body">
             <h3 class="card-title">SIGN-UP HERE</h3>
             <hr>
             <form method="post" action="/signup/">
               {% csrf_token %} 
               {% for field in form %}
-              <h5 class="card-text">{{field.html_name}}</h5>
-              {{field}}<br><br>
+              <p class="card-text signup-field-name">{{field.html_name}}</p>
+              {{field}}<br>
               {% endfor %}
               <br>
-              <input type="submit" class="btn btn-success" value="CREATE ACCOUNT">
+              <input type="submit" class="btn btn-info text-light" value="CREATE ACCOUNT">
             </form><br>
 
             <p class="card-text">*Note: 

@@ -5,10 +5,10 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid py-2">
-        <a class="navbar-brand text-success text-lg" href="#"
-          ><i class="fa fa-image" style="color: lightseagreen"></i> Image
-          Share</a
-        >
+        <a class="navbar-brand" id="site-name" href="#"
+          ><i class="fa fa-fire"></i> Image Share
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -26,8 +26,8 @@
           role="search"
           style="border-radius: 5px; width: 75%"
           action="/manualsearch/"
-          method="post"
-        >
+          method="post">
+
           {% csrf_token %}
           <input
             class="form-control me-0"
@@ -302,4 +302,6 @@
         {% endfor %}
       </div>
     </div>
+    
+
     {% include 'footer.html' %}
