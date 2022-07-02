@@ -146,6 +146,43 @@ details p {
   text-decoration: none;
 }
 
+.homepageImgs a {
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+.overlay {
+  margin: 0 6px;
+  top: 0;
+  left: 0;
+  width: 97%;
+  position: absolute;
+  overflow: hidden;
+  background: rgb(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: 0.5s;
+  transform: translate(0%, 45%);
+}
+.content {
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 15px 5px;
+  font-size: 20px;
+}
+
+.content i {
+  padding: 10px 15px;
+  color: black;
+  background: whitesmoke;
+  border-radius: 20%;
+}
+
+.homepageImgs:hover .overlay {
+  opacity: 1;
+  transform: translate(0%, 80%);
+}
+
 .login-input-box {
   height: 40px;
   padding: 5px;

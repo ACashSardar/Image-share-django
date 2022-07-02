@@ -110,7 +110,7 @@
         </div>
         <div class="col-xl-6 col-12 p-1">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body homepageImgs">
               {% if selectedimg.capt %}
               <h5 class="card-title">{{selectedimg.capt}}</h5>
               {% else %}
@@ -126,7 +126,7 @@
                 </h1>
                 <label><strong>{{selectedimg.user.username}}</strong></label>
                 <br />
-                <label><i>{{profile.email}}</i></label>
+                <label>{{profile.email}}</label>
               </a>
               <br />
 
@@ -143,13 +143,12 @@
                 <label>Image Category: {{selectedimg.catg}}</label>
               </p>
 
-              <a href="{{selectedimg.photo.url}}">
+              <a href="{{selectedimg.photo.url}}" download="{{selectedimg.photo.url}}">
                 <button
-                  download="{{selectedimg.photo.url}}"
                   type="button"
-                  class="btn btn-success"
-                >
-                  <i class="fa fa-download"></i> Download
+                  class="btn btn-success">
+                  <i class="fa fa-download"></i> 
+                  Download
                 </button>
               </a>
               {% if not visitor %}
@@ -176,14 +175,24 @@
       <div class="row" id="news">
         {% for image in images %}
         <div class="col-xl-4 col-md-6 col-12 p-1">
-          <div class="card-body">
+          <div class="card-body homepageImgs">
             <a href="{% url 'selectimg' image.catg image.id %}">
               <img src="{{image.photo.url}}" class="card-img-top" alt="..." />
+              <div class="overlay">
+                <div class="content">
+                    <label class="card-text">{{image.capt}}</label><br>
+                    <label class="card-text">-by {{image.user.username}}</label>
+                </div>
+              </div>
             </a>
           </div>
         </div>
         {% endfor %}
       </div>
+    </div>
+
+    <div class="container-fluid d-flex justify-content-center my-3">
+      <button class="btn btn-secondary" id="load-more">Load More</button>
     </div>
 
     {% include 'footer.html' %}

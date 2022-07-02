@@ -195,6 +195,7 @@ def catgsearch(request,catg):
         for ac in allcatg:
             if str(ac.title)==catg:
                 images=Image.objects.filter(catg=ac)
+    images=Shuffle(images)
     context={'images':images,'category':category,'visitor':False,'registered':request.user.is_authenticated}
     return render(request,'homepage.html',context)
     
